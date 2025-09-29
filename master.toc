@@ -1,2 +1,0 @@
-\contentsline {chapter}{\numberline {1}Power Series}{2}{}%
-\contentsline {section}{\numberline {1.1}Formulas for Calculating the Radius of Convergence}{5}{}%
