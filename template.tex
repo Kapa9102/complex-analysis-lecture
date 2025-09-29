@@ -9,6 +9,7 @@
 \usepackage{marginnote, xcolor}
 \usepackage{graphicx}
 \usepackage{footnote}
+\usetikzlibrary{patterns, patterns.meta}
 % \usepackage{fourier-orns}
 % \usepackage{fontawesome5}
 \usepackage{tcolorbox}
@@ -86,11 +87,11 @@
   \begin{tikzpicture}[remember picture, overlay]
 
     \ifchapterpage
-    \draw[draw=black,fill=larratBicep!35] ([yshift = -(\paperheight - \textheight)/2 + 1.5cm, 
+    \draw[draw=black,fill=larratBicep!35, opacity=0.5] ([yshift = -(\paperheight - \textheight)/2 + 1.5cm, 
                                          xshift = (\paperwidth - \textwidth)/2 - 1.5cm]current page.north west) rectangle
                                           ([yshift = (\paperheight - \textheight)/2 + 0.5cm ,
                                           xshift = -(\paperwidth - \textwidth)/2 - 0.5cm]current page.south east);
-    \draw[draw=larratBicep!50, step=5mm] ([yshift = -(\paperheight - \textheight)/2 + 1.5cm, 
+    \draw[draw=larratBicep!50, step=5mm, opacity=0.5] ([yshift = -(\paperheight - \textheight)/2 + 1.5cm, 
                                           xshift = (\paperwidth - \textwidth)/2 - 1.5cm]current page.north west) grid
                                           ([yshift = (\paperheight - \textheight)/2 + 0.5cm ,
                                           xshift = -(\paperwidth - \textwidth)/2 - 0.5cm]current page.south east);
@@ -102,15 +103,15 @@
 
     \else         
 
-    \draw[draw=black,fill=larratBicep!35] ([yshift = -(\paperheight - \textheight)/2 + 1.5cm, 
+    \draw[draw=black,fill=larratBicep!35, opacity=0.5] ([yshift = -(\paperheight - \textheight)/2 + 1.5cm, 
                                          xshift = (\paperwidth - \textwidth)/2 - 1.5cm]current page.north west) rectangle
                                           ([yshift = (\paperheight - \textheight)/2 + 0.5cm ,
                                           xshift = -(\paperwidth - \textwidth)/2 - 0.5cm]current page.south east);
-    \draw[draw=larratBicep!50, step=5mm] ([yshift = -(\paperheight - \textheight)/2 + 1.5cm, 
+    \draw[draw=larratBicep!50, step=5mm, opacity=0.5] ([yshift = -(\paperheight - \textheight)/2 + 1.5cm, 
                                           xshift = (\paperwidth - \textwidth)/2 - 1.5cm]current page.north west) grid
                                           ([yshift = (\paperheight - \textheight)/2 + 0.5cm ,
                                           xshift = -(\paperwidth - \textwidth)/2 - 0.5cm]current page.south east);
-    \draw[draw=black] ([yshift = -(\paperheight - \textheight)/2 + 1.5cm, 
+    \draw[draw=black, opacity=0.5] ([yshift = -(\paperheight - \textheight)/2 + 1.5cm, 
                                          xshift = (\paperwidth - \textwidth)/2 - 1.5cm]current page.north west) rectangle
                                          ([yshift = (\paperheight - \textheight)/2 + 0.5cm ,
                                          xshift = -(\paperwidth - \textwidth)/2 - 0.5cm]current page.south east);
