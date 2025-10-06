@@ -14,6 +14,7 @@
 % \usepackage{fontawesome5}
 \usepackage{tcolorbox}
 \tcbuselibrary{skins}
+\tcbuselibrary{breakable}
 
 % Geometry
 
@@ -137,6 +138,7 @@
 {title=Theorem \thetcbcounter\maybep{#1}: ,drop lifted shadow=black,enhanced,colframe=blue!50!black,colback=blue!25!denisBicep!50,attach title to upper = {\ },
 coltitle=blue!50!black,fonttitle=\upshape\bfseries,fontupper=\itshape,
 sharp corners = all,boxrule = 0pt,
+breakable,
 underlay = {\draw[step=5mm,
   draw = blue!25!denisBicep!60] (interior.north east)
 grid (interior.south west);
@@ -157,6 +159,7 @@ grid (interior.south west);
 
 \newtcolorbox[use counter from=theorem]{proposition}[1][]           
 {title=Proposition \thetcbcounter\maybep{#1}: ,drop lifted shadow=black,enhanced,colframe=denisBicep!35,colback=denisBicep!35,attach title to upper = {\ },
+breakable,
 underlay = { 
   \draw[larratBicep!60] ([xshift = 0.45cm]interior.north west) -- ([yshift = -0.28cm, xshift = 0.48cm]interior.north west); %  -----
   \draw[larratBicep!60] ([yshift = -0.35cm]interior.north west) -- ([yshift = -0.28cm, xshift = 0.48cm]interior.north west); % -
@@ -180,6 +183,7 @@ grid (interior.south west);}
 
 \newtcolorbox[auto counter, number within=section]{definition}[1][]           
 {title=Definition \thetcbcounter\maybep{#1}: ,drop lifted shadow=black,enhanced,colframe=red!25,colback=red!25!larratBicep!50,attach title to upper = {\ },
+breakable,
 coltitle=red!50!black,fonttitle=\upshape\bfseries,fontupper=\itshape,
 sharp corners = all,boxrule = 0pt,
 underlay = {\draw[step=5mm,
@@ -204,6 +208,7 @@ grid (interior.south west);
 \newtcolorbox[use counter from=theorem]{corollary}[1][]           
 {title=Corollary \thetcbcounter\maybep{#1}: ,drop lifted shadow=black,enhanced,colframe=green!35!black!15,colback=green!35!black!15!denisBicep!45,attach title to upper = {\ },
 coltitle=green!25!black,fonttitle=\upshape\bfseries,fontupper=\itshape,
+breakable,
 sharp corners = all,boxrule = 0pt,
 underlay = {\draw[step=5mm,
   draw = green!40!black!30!denisBicep!50] (interior.north east)
@@ -227,6 +232,7 @@ grid (interior.south west);
 \newtcolorbox[auto counter]{example}
 {title=Example: ,drop fuzzy shadow=black,enhanced,colframe=gray!50!black,colback=gray!35,attach title to upper = {\ },
 coltitle=gray!50!black,fonttitle=\upshape\bfseries,fontupper=\itshape,
+breakable,
 sharp corners = all,boxrule = 0pt,
 underlay = {\draw[step=5mm,
   draw = gray!40!black!30] (interior.north east)
