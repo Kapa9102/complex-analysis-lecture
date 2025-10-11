@@ -1,7 +1,7 @@
 % lec2.tex 
 \lecture{2}{08:00 AM Mon, Oct 06 2025}{} 
 \begin{proposition}[Ratio Test Formula]
-  Let $\sum_{n=1}^{\infty} a_n (z-z_0) ^n  $ be a power series. suppose that the limit 
+  Let $\sum_{n=0}^{\infty} a_n (z-z_0) ^n  $ be a power series. Suppose that the limit 
   \[
   \al = \lim_{n \to \infty}
   \left| 
@@ -14,9 +14,9 @@
 \begin{proof}
 We use the d'Allembert rule for the series 
 \[
-\sum_{n=1}^{\infty} a_n (z-z_0) ^n \quad \quad   (z \in  \CC \backslash \left\{ z_0 \right\})  
+\sum_{n=0}^{\infty} a_n (z-z_0) ^n \quad \quad   (z \in  \CC \backslash \left\{ z_0 \right\})  .
 \]
-let $z \in \CC \backslash \left\{ z_0 \right\} $. we have: 
+Let $z \in \CC \backslash \left\{ z_0 \right\} $. we have: 
 \begin{align*}
   \lim_{n \to \infty} \left| \frac{a_{n+1}(z-z_0) ^{n+1}}{a_n (z-z_0) ^n } \right| 
   &=
@@ -28,51 +28,66 @@ let $z \in \CC \backslash \left\{ z_0 \right\} $. we have:
 \end{align*}
 By the d'Allembert rule, we have: 
 \begin{itemize}
-  \item The series $\sum_{n=1}^{\infty} a_n (z-z_0) ^n  $ 
+  \item[\ding{49}] The series $\sum_{n=0}^{\infty} a_n (z-z_0) ^n  $ 
     converges if 
     \[
     \frac{\left| z-z_0 \right|}{\al}< 1 \quad  \text{ i.e. } 
     \quad 
-    \left| z-z_0 \right|< \al
+    \left| z-z_0 \right|< \al.
     \]
-    \item 
-      The series $\sum_{n=1}^{\infty} a_n (z-z_0) ^n $ 
+  \item[\ding{49}]
+      The series $\sum_{n=0}^{\infty} a_n (z-z_0) ^n $ 
       diverges if 
       \[
       \frac{\left| z-z_0 \right|}{\al} > 1 
       \quad 
-      \text{ i.e. } \quad   \left| z-z_0 \right| > \al
+      \text{ i.e. } \quad   \left| z-z_0 \right| > \al.
       \]
       Hence $R = \al$. 
 \end{itemize}
 \end{proof}
 \begin{example}
-Determine the radius of convergence of the power series $\sum_{n=1}^{\infty} \frac{z _n }{n!}$ where $z_0 = 0$.  \\
-\underline{\emph{1 $^{st} $ method: (By Hadamard formula) }}  \\
-We must compute $\lim_{n \to \infty} \sup_{} \left( \frac{1}{n!} \right)^{\frac{1}{n}} $, 
-by the stirling formula, we have that: 
+Determine the radius of convergence of the power series $\sum_{n=0}^{\infty} \frac{z _n }{n!}$ where $z_0 = 0$.  \\
+\textcolor{black}{
+  \underline{
+\uline{
+\textsc{
+1 $^{st} $ Method: (By Hadamard formula)
+}
+  }
+}\\
+}
+We must compute $\lim_{n \to \infty} \sup_{} \left( \frac{1}{n!} \right)^{\frac{1}{n}} $. By
+the stirling formula, we have that: 
 \[
-n! \overset{+\infty }{\sim} n^{n}e^{-n} \sqrt{2\pi n} 
+  n! \sim_{\text{\tiny$+\infty  $ }   } n^{n}e^{-n} \sqrt{2\pi n} .
 \]
 Thus we get: 
 \[
-(n!) ^{\frac{1}{n}} \overset{+\infty }{\sim} n e^{-1}(2 \pi n) ^{\frac{1}{2n}}
+(n!) ^{\frac{1}{n}} \sim_{\text{\tiny$+\infty  $ }   } n e^{-1}(2 \pi n) ^{\frac{1}{2n}}.
 \]
 Thus \[
 \left( \frac{1}{n!} \right)^{\frac{1}{n}} 
-\overset{+\infty }{\sim} 
-\frac{e}{n}(2 \pi  n) ^{-\frac{1}{2n}} \rightarrow 0 \text{ as $n \rightarrow \infty  $ } 
+ \sim_{\text{\tiny$+\infty  $ }   }
+\frac{e}{n}(2 \pi  n) ^{-\frac{1}{2n}} \rightarrow 0 \text{ as $n \rightarrow +\infty  $ } .
 \]
 Thus $R = \frac{1}{0} = +\infty$. \\
-This means that the power series $\sum_{n=1}^{\infty} \frac{z^{n}}{n!} $ converges
+This means that the power series $\sum_{n=0}^{\infty} \frac{z^{n}}{n!} $ converges
 for all $z \in \CC $. \\
-\underline{\emph{2 $^{nd} $ method:}}  \\
-We use proposition $2 $. we have: 
+\newpage
+  \underline{
+\uline{
+\textsc{
+2 $^{nd} $ Method:
+}
+  }
+}\\
+We use \it Proposition $2 $ \normalfont. we have: 
 \begin{align*}
 \lim_{n \to \infty} \left| \frac{\frac{1}{n!}}{\frac{1}{(n+1) !}} \right|  
 &= 
 \lim_{n \to \infty} \frac{(n+1) !}{n!} \\
-&= \lim_{n \to \infty} (n+1)  = +\infty 
+&= \lim_{n \to \infty} (n+1)  = +\infty .
 \end{align*}
 Thus $R = +\infty $ 
 \end{example}
@@ -85,10 +100,13 @@ Let $ f : \Omega  \longrightarrow \CC  $ be a map. then:
   $(a_n ) _{n \in   \NN_0} $ such that $D(z_0, r) \subset \Omega  $  and: 
   \[
   f(z) = 
-  \sum_{n=1}^{\infty} a_n (z-z_0) ^n \quad *\forall  z \in   D(z_0, r) 
+  \sum_{n=0}^{\infty} a_n (z-z_0) ^n \quad 
+  \left( 
+  \forall  z \in   D(z_0, r)
+  \right).
   \]
   \item $f $ is said to be analytic on $\Omega  $ if its analytic at every point of 
-    $\Omega $ 
+    $\Omega $. 
 \end{enumerate}
 \end{definition}
 \begin{center}
@@ -100,24 +118,25 @@ Let $ f : \Omega  \longrightarrow \CC  $ be a map. then:
       $z_0 \in   \CC  $. since $P(z + z_0)  \in  \CC [ \mathbb{Z}]$, we can write: 
       \[
       P(z+z_0)  = 
-      \sum_{n=0}^{d} a_n z^n  \quad (d \in   \NN_0) 
+      \sum_{n=0}^{d} a_n z^n  \quad (d \in   \NN_0) .
       \]
-      substituting $z $ by $(z-z_0)  $. we get: 
+      Substituting $z $ by $(z-z_0)  $, we get: 
       \[
       P(z) = 
-      \sum_{n=0}^{d} a_n (z-z_0) ^n 
+      \sum_{n=0}^{d} a_n (z-z_0) ^n    ,
       \]
       which is a power series centered at $z_0 $ with infinite randius of convergence. 
-      Thus, $P $ is analytic at $z_0 $, since $z_0 $ was arbitrary $P $ is analytic
+      Thus, $P $ is analytic at $z_0 $. Since $z_0 $ was arbitrary, $P $ is analytic
       on $\CC$. 
+      \divider
       \item 
         The function $z \longrightarrow  \frac{1}{z}$ is analytic on 
         $\CC ^{*} = \CC  \backslash  \left\{ 0 \right\} $. Indeed, let $z_0 \in   \CC ^{*} $ arbitrary. \\
         For $z \in  D(z_0, \left| z_0 \right|  )  $, we have: 
         \[
-        \left| \frac{z-z_0}{z_0} \right|  < 1
+        \left| \frac{z-z_0}{z_0} \right|  < 1.
         \]
-        we can write 
+        We can write 
         \begin{align*}
           \frac{1}{z} &= \frac{1}{z_0 + (z-z_0) } 
           \\
@@ -125,27 +144,27 @@ Let $ f : \Omega  \longrightarrow \CC  $ be a map. then:
           \frac{1}{z_0} \cdot \frac{1}{1 + \frac{z-z_0}{z_0} } \\
           &= 
           \frac{1}{z_0} \cdot  
-          \sum_{n=1}^{\infty} (-1) ^n  
+          \sum_{n=0}^{\infty} (-1) ^n  
           \left( \frac{z-z_0}{z_0} \right) ^n  \\ 
           &= 
-          \sum_{n=1}^{\infty} \frac{(-1) ^n }{z_0^{n+1}} 
-          (z-z_0) ^n 
+          \sum_{n=0}^{\infty} \frac{(-1) ^n }{z_0^{n+1}} 
+          (z-z_0) ^n ,
         \end{align*}
         which is a power series centered at $z_0 $, valid on $D(z_0, \left| z_0 \right|  )  $. Hence
-         $z \longrightarrow \frac{1}{z} $, is analytic at $z_0 $. since $z_0 \in   \CC ^{*} $ was
-         arbitrary, then $z \longrightarrow \frac{1}{z} $ is analytic on $\CC ^{*} $ 
+         $z \longrightarrow \frac{1}{z} $ is analytic at $z_0 $. Since $z_0 \in   \CC ^{*} $ was
+         arbitrary, then $z \longrightarrow \frac{1}{z} $ is analytic on $\CC ^{*} $.
   \end{enumerate}
 \end{example}
   \subsection{Properties of Analytic Functions}
   \begin{proposition}[]
-  Let $\Omega  $ be a non empty open subset of $\CC  $ and let $z_0 \in   \Omega  $ if, 
-  $ f,g : \Omega  \longrightarrow \CC  $ are analytic at $z_0 $, then the same for $(f+g)  $ and 
+  Let $\Omega  $ be a non empty open subset of $\CC  $ and let $z_0 \in   \Omega  $. If 
+  $ f,g : \Omega  \longrightarrow \CC  $ are analytic at $z_0 $, then the same is for $(f+g)  $ and 
   $(f \cdot g)  $. Moreover, if $f  $ and $g $ are represented by power series with radii of convergence $R_{f} $ and
-  $R_{g} $ respectively then $(f+g)  $ and $(f \cdot  g)  $ represented by power series 
-  with radii of convergence $ \geq \min (R_{f}, R_{g})  $ 
+  $R_{g} $ respectively then $(f+g)  $ and $(f \cdot  g)  $ are represented by power series 
+  with radii of convergence $ \geq \min (R_{f}, R_{g})  $. 
   \end{proposition}
   \begin{proof}
-  Exercise
+  Exercise.
   \end{proof}
   \begin{corollary}[]
     Let $ \Omega  $ be a non empty open subset of $\CC  $ and let $ f,g : \Omega  \longrightarrow \CC $. If $f $ 
@@ -153,52 +172,46 @@ Let $ f : \Omega  \longrightarrow \CC  $ be a map. then:
     and $(f \cdot g)$. 
   \end{corollary}
   \begin{proposition}[Analyticity  $ \implies $ Continuity]
-    Let $\Omega  $ be a non empty open subset of $\CC  $ and let $z_0 \in  \Omega  $,
-    Let also $ f : \Omega  \longrightarrow \CC  $ be a map. \\
-    if $f $ is analytic at $z_0 $ then $f $ is continuous at $z_0 $ 
+    Let $\Omega  $ be a non empty open subset of $\CC  $ and let $z_0 \in  \Omega  $.
+    Let also $ f : \Omega  \longrightarrow \CC  $ be a map. 
+    If $f $ is analytic at $z_0 $ then $f $ is continuous at $z_0 $ 
   \end{proposition}
   \begin{proof}
   Suppose that $f $ is analytic at $z_0 $ then there exists $R > 0 $ and a complex sequence $(a_n ) _{n \in  \NN_0} $ such
   that $D(z_0, R) \subset \Omega  $  and: 
   \[
   f(z) = 
-  \sum_{n=1}^{\infty} a_n (z-z_0) ^n  \quad (\forall  z \in   D(z_0, R) ) 
+  \sum_{n=0}^{\infty} a_n (z-z_0) ^n  \quad (\forall  z \in   D(z_0, R) ) 
   \]
-  in particular, $f(z_0)  = a_0 $. Thus for all $z \in   D(z_0, R)  $ we have: 
+  In particular, $f(z_0)  = a_0 $. Thus for all $z \in   D(z_0, R)  $ we have: 
   \begin{align*}
     f(z)  - f(z_0)  &= 
     \sum_{n=1}^{\infty} a_n (z-z_0) ^n  \\
                     &= 
                     (z-z_0) \sum_{n=1}^{\infty} a_n (z-z_0) ^{n-1} \\
                     &= (z-z_0)  
-                    \underbrace{
-                    \sum_{n=1}^{\infty} a_{n+1} (z-z_0) ^n 
-                    }_{(1) } 
+                    \sum_{n=0}^{\infty} a_{n+1} (z-z_0) ^n  \quad \quad  (1)
   \end{align*}
   By the Hadamard formula, we see that the power series 
-  $\sum_{n=1}^{\infty} a_{n+!}(z-z_0) ^n  $ has the same 
-  radius of convergence as the original power series $\sum_{n=1}^{\infty} a_n (z-z_0) ^n  $ 
-  \[
-  \left( R' = \frac{1}{\lim_{n \to \infty} \sup_{ } \left| a_{n+1} \right|  ^{\frac{1}{n}}} 
-  = \frac{1}{\lim_{n \to \infty} \sup_{}  \left| a_n  \right|  ^{\frac{1}{n-1}}}\right)   
-  \]
-  Consequently, the power series $\sum_{n=1}^{\infty} a_{n+1}(z-z_0) ^n  $  converges
-  absolutely for $\left| z-z_0 \right|  < R $, let $r \in  \RR  $ such that 
-  $0 <  r <  R$. then for all $z \in  D(z_0, r)  $, we have  from (1) the estimate: 
+  $\sum_{n=0}^{\infty} a_{n+1}(z-z_0) ^n  $ has the same 
+  radius of convergence as the original power series $\sum_{n=0}^{\infty} a_n (z-z_0) ^n  $.
+  Consequently, the power series $\sum_{n=0}^{\infty} a_{n+1}(z-z_0) ^n  $  converges
+  absolutely for $\left| z-z_0 \right|  < R $. Let $r \in  \RR  $ such that 
+  $0 <  r <  R$. Then for all $z \in  D(z_0, r)  $, we have  from (1) the estimate: 
   \begin{align*}
     \left| f(z) - f(z_0)  \right|  &= 
     \left| z-z_0 \right|   
     \cdot 
-    \left| \sum_{n=1}^{\infty} a_{n+1}(z-z_0) ^n  \right|  
+    \left| \sum_{n=0}^{\infty} a_{n+1}(z-z_0) ^n  \right|  
                                 \\ & \leq 
-                                \left| z-z_0 \right|  \sum_{n=1}^{\infty} \left| a_{n+1} \right|  
+                                \left| z-z_0 \right|  \sum_{n=0}^{\infty} \left| a_{n+1} \right|  
                                 \left| z-z_0 \right|  ^n \\
                                    & \leq 
                                    \left| z-z_0 \right|  
                                    \underbrace{
-                                   \sum_{n=1}^{\infty} \left| a_{n+1} \right|  \cdot 
+                                   \sum_{n=0}^{\infty} \left| a_{n+1} \right|  \cdot 
                                    r^{n}
-                                   }_{(\text{since }  r <  R) } 
+                                   }_{< +\infty  \text{ since }  r <  R } .
   \end{align*}
   Taking the limit as $z \rightarrow z_0 $, we conclude that $\lim_{z \to z_0} f(z) = f(z_0)  $, so $f $ is continuous at 
   $z_0$. 
@@ -207,9 +220,9 @@ Let $ f : \Omega  \longrightarrow \CC  $ be a map. then:
     Let $\Omega  $ be a non empty open subset of $\CC  $ and $ f : \Omega  \longrightarrow \CC  $. If 
     $f $ is analytic on $\Omega  $, then $f $ is continuous on $\Omega$. 
   \end{corollary}
-  \begin{proposition}[Composition of Analytic :unctions]
+  \begin{proposition}[Composition of Analytic functions]
     Let $\Omega_{1} $ and $\Omega _{2} $ be two 
-    non empty open subsets of $\CC  $ and 
+    nonempty open subsets of $\CC  $ and 
     let
     $ f : \Omega _{1} \longrightarrow \Omega _{2} $ and 
     $ g : \Omega _{2} \longrightarrow \CC  $ 
@@ -222,69 +235,69 @@ Let $ f : \Omega  \longrightarrow \CC  $ be a map. then:
   \end{proof}
   \begin{corollary}[Immediate]
     Let $\Omega_{1} $ and $\Omega _{2} $ be two 
-    non empty open subsets of $\CC  $ and let $ f : \Omega _{1} \longrightarrow  \Omega _{2}$ 
+    nonempty open subsets of $\CC  $ and let $ f : \Omega _{1} \longrightarrow  \Omega _{2}$ 
     and $ g : \Omega _{2} \longrightarrow \CC  $ be two maps. If $f $ is analytic
     on $\Omega _{1} $ and $g $ is analytic on $\Omega _{2} $ then $(g \circ f)  $ is analytic
     on $\Omega _{1} $. 
   \end{corollary}
   \begin{proposition}[Quotient of Analytic Functions]
-    Let $\Omega  $ be a non empty open subsets of $\CC  $ and let $z_0 \in  \Omega  $. let 
+    Let $\Omega  $ be a nonempty open subsets of $\CC  $ and let $z_0 \in  \Omega  $. Let 
     also $ f,g : \Omega  \longrightarrow \CC  $ be two functions which are both analytic at $z_0 $ 
-    and such that $ g(z_0) \neq 0 $. Then the function $\frac{f}{g} $ is analytic at $z_0 $ 
+    and such that $ g(z_0) \neq 0 $. Then the function $\frac{f}{g} $ is analytic at $z_0 $.
   \end{proposition}
   \begin{proof}
-  since $g(z_0) \neq 0 $ then the function $ h : w \longrightarrow \frac{1}{w} $ is analytic at $g(z_0)  $
-  (as seen in previous examples), therefore. by proposition $5 $, the function $\frac{1}{g} = h \circ g $ is 
+  Since $g(z_0) \neq 0 $ then the function $ h : w \longrightarrow \frac{1}{w} $ is analytic at $g(z_0)  $
+  (as seen in previous examples). Therefore, by \it Proposition $1.2.5$\normalfont, the function $\frac{1}{g} = h \circ g $ is 
   anayltic at $z_0 $. \\
-  It then follows from proposition $1 $ that the product $f \cdot \left( \frac{1}{g} \right)  $ is analytic
-  at $z_0 $ 
+  It then follows from \it Proposition $1.2.1 $ \normalfont that the product $f \cdot \left( \frac{1}{g} \right)  $ is analytic
+  at $z_0 $.
   \end{proof}
   \begin{corollary}[Immediate]
     Let $\Omega  $ be a non empty open subset of $\CC  $ and let $ f,g : \Omega  \longrightarrow \CC  $ be
-    two analytic functions on $\Omega  $ such that $g(z) \neq 0 $. for every $z \in   \Omega $. Then the
+    two analytic functions on $\Omega  $ such that $g(z) \neq 0 $ for every $z \in   \Omega $. Then the
     function $\frac{f}{g} $ is analytic on $\Omega  $ .
   \end{corollary}
   \begin{example}
-    Every rational function is analytic on its domain of definition. this is because a rational
-    function is a quotient of two polynomials, and polynomials are analytic on $\CC  $ 
+    Every rational function is analytic on its domain of definition. This is because a rational
+    function is a quotient of two polynomials, and polynomials are analytic on $\CC  $.
   \end{example}
   \divider
   \section{Power series define Analytic functions}
   \begin{theorem}[]
-  A power series with a positive radius of converges defines an analytic function on its disk of convergence
+  A power series with a positive radius of converges defines an analytic function on its disk of convergence.
   \end{theorem}
   \begin{proof}
-  Let $\sum_{n=1}^{\infty} a_n (z-z_0) ^n  $ be a power series $(z_0 \in  \CC , (a_n ) _{n \in  \NN)} \subset \CC )  $ 
-  with radius of convergence $R > 0 $. define the function $f $ on the disk $D(z_0, R)  $ by: 
+  Let $\sum_{n=0}^{\infty} a_n (z-z_0) ^n  $ be a power series $(z_0 \in  \CC , (a_n ) _{n \in  \NN)} \subset \CC )  $ 
+  with radius of convergence $R > 0 $. Define the function $f $ on the disk $D(z_0, R)  $ by: 
   \[
-  f(z)  = \sum_{n=1}^{\infty} a_n (z-z_0) ^n 
+  f(z)  = \sum_{n=0}^{\infty} a_n (z-z_0) ^n .
   \]
-  we must show that $f $ is analytic on $D(z_0, R)$. arbitrary we will show that $f $ 
-  is analytic at $z_1 $ for $z \in   D(z_1, R - \left| z_1-z_0 \right|  )  $, we have 
+  We must show that $f $ is analytic on $D(z_0, R)$. Let $z_1 \in D(z_0, R) $ arbitrary. We will show that $f $ 
+  is analytic at $z_1 $. For $z \in   D(z_1, R - \left| z_1-z_0 \right|  )  $, we have 
   \[
-  \left| z-z_0 \right|  \overset{I.I}{ \leq } 
+  \left| z-z_0 \right|  \overset{T.I}{ \leq } 
   \underbrace{
     \left| z-z_1 \right|  
   }_
  {
    < R - \left| z_1-z_0 \right|  
  } 
- + \left| z_1-z_0 \right|  
+ + \left| z_1-z_0 \right|  <  R
   \]
   Thus $D(z_1, R - \left| z_1-z_0 \right|  )  \subset D(z_0, R)  $, so the power series 
-  $\sum_{n=1}^{\infty} a_n (z-z_0) ^n  $ converges absolutely. so: 
+  $\sum_{n=0}^{\infty} a_n (z-z_0) ^n  $ converges absolutely. so: 
   \begin{align*}
-    f(z) &= \sum_{n=1}^{\infty} a_n (z-z_0) ^n \\
+    f(z) &= \sum_{n=0}^{\infty} a_n (z-z_0) ^n \\
          &= 
-         \sum_{n=1}^{\infty} a_n ((z-z_1)  + (z_1 - z_0) ) ^n 
+         \sum_{n=0}^{\infty} a_n ((z-z_1)  + (z_1 - z_0) ) ^n 
          \\
          &= 
-         \sum_{n=1}^{\infty} a_n \sum_{k=0}^{n}  
+         \sum_{n=0}^{\infty} a_n \sum_{k=0}^{n}  
          \binom{n}{k} 
          (z-z_1) ^{k} (z_1-z_0) ^{n-k}
          \\
          &= 
-         \sum_{k=1}^{\infty} \left( 
+         \sum_{k=0}^{\infty} \left( 
            \sum_{n=k}^{\infty } a_{k}
            \binom{ n}{k} 
            (z_1 - z_0) ^{n-k}
@@ -292,9 +305,9 @@ Let $ f : \Omega  \longrightarrow \CC  $ be a map. then:
          (z-z_1) ^{k}
   \end{align*}
   The interchange of summation is justified by the absolute convergence of the double
-  series for $z \in   D(z_1, R - \left| z_1- z_0 \right|  )  $. \\
-  This express $f(z)  $ as a power series in $(z-z_1)  $ in the disk $D(z_1, R - \left| z_1-z_0 \right|  )  $ proving
-  that $f $ is analytic at $z_1 $. since $z_1 $ was arbitrary in $D(z_0, R)  $ then $f $ is analytic on 
+  series for $z \in   D(z_1, R - \left| z_1- z_0 \right|  )  $. 
+  This express $f(z)  $ as a power series in $(z-z_1)  $ in the disk $D(z_1, R - \left| z_1-z_0 \right|  )  $, proving
+  that $f $ is analytic at $z_1 $. Since $z_1 $ was arbitrary in $D(z_0, R)  $, then $f $ is analytic on 
   $D(z_0, R)$. 
   \end{proof}
 %  end of file

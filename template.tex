@@ -64,9 +64,9 @@
 {
 	\begin{center}
 	\begin{tikzpicture}
-		\draw[thick, black] (0.25*\textwidth, 0) -- (0.75*\textwidth, 0);
-		\node[rotate = 360 - 90, xshift = -0.6pt, yshift = 1pt] at (0.25*\textwidth,0){};
-		\node[rotate = 90, xshift = -0.6pt, yshift = 1pt] at (0.75*\textwidth,0){};
+		\draw[black, dashed] (0.25*\textwidth, 0) -- (0.75*\textwidth, 0);
+		\node[rotate = 360 - 90, xshift = -0.6pt, yshift = 1pt] at (0.25*\textwidth,0) { };
+		\node[rotate = 90, xshift = -0.6pt, yshift = 1pt] at (0.75*\textwidth,0) { };
 	\end{tikzpicture}
 	\end{center}
 }
@@ -149,11 +149,11 @@ grid (interior.south west);
 ([xshift = 0.45cm]interior.north west) -- ([yshift = -0.28cm, xshift = 0.48cm]interior.north west) -- 
    ([yshift = -0.35cm]interior.north west) -- ([xshift = 0.45cm]interior.north west) ;
                                                                                                                               % -  x
-\fill[fill=larratBicep!35] ([yshift = -0.35cm]interior.north west) -- ([xshift = 0.45cm]interior.north west) -- (interior.north west);
+\fill[fill=larratBicep!35!white!50] ([yshift = -0.35cm]interior.north west) -- ([xshift = 0.45cm]interior.north west) -- (interior.north west);
 
-\draw[larratBicep!50] ([yshift = -0.35cm]interior.north west) -- (interior.north west);
-\draw[larratBicep!35] ([yshift = -0.35cm]interior.north west) -- ([xshift = 0.45cm]interior.north west);
-\draw[larratBicep!35] ([xshift = 0.45cm]interior.north west) -- (interior.north west);
+\draw[larratBicep!35] ([yshift = -0.35cm]interior.north west) -- (interior.north west);
+\draw[larratBicep!35!white!50] ([yshift = -0.35cm]interior.north west) -- ([xshift = 0.45cm]interior.north west);
+\draw[larratBicep!35!white!50] ([xshift = 0.45cm]interior.north west) -- (interior.north west);
 }
 }
 
@@ -168,11 +168,11 @@ underlay = {
   ([xshift = 0.45cm]interior.north west) -- ([yshift = -0.28cm, xshift = 0.48cm]interior.north west) -- 
      ([yshift = -0.35cm]interior.north west) -- ([xshift = 0.45cm]interior.north west) ;
                                                                                                                                 % -  x
-  \fill[fill=larratBicep!35] ([yshift = -0.35cm]interior.north west) -- ([xshift = 0.45cm]interior.north west) -- (interior.north west);
+  \fill[fill=larratBicep!35!white!50] ([yshift = -0.35cm]interior.north west) -- ([xshift = 0.45cm]interior.north west) -- (interior.north west);
 
-  \draw[larratBicep!50] ([yshift = -0.35cm]interior.north west) -- (interior.north west);
-  \draw[larratBicep!35] ([yshift = -0.35cm]interior.north west) -- ([xshift = 0.45cm]interior.north west);
-  \draw[larratBicep!35] ([xshift = 0.45cm]interior.north west) -- (interior.north west);
+  \draw[larratBicep!35] ([yshift = -0.35cm]interior.north west) -- (interior.north west);
+  \draw[larratBicep!35!white!50] ([yshift = -0.35cm]interior.north west) -- ([xshift = 0.45cm]interior.north west);
+  \draw[larratBicep!35!white!50] ([xshift = 0.45cm]interior.north west) -- (interior.north west);
 },
 coltitle=red!50!black,fonttitle=\upshape\bfseries,fontupper=\itshape,
 sharp corners = all,boxrule = 0pt,
@@ -196,11 +196,34 @@ grid (interior.south west);
   ([xshift = 0.45cm]interior.north west) -- ([yshift = -0.28cm, xshift = 0.48cm]interior.north west) -- 
      ([yshift = -0.35cm]interior.north west) -- ([xshift = 0.45cm]interior.north west) ;
                                                                                                                                 % -  x
-  \fill[fill=larratBicep!35] ([yshift = -0.35cm]interior.north west) -- ([xshift = 0.45cm]interior.north west) -- (interior.north west);
+  \fill[fill=larratBicep!35!white!50] ([yshift = -0.35cm]interior.north west) -- ([xshift = 0.45cm]interior.north west) -- (interior.north west);
 
-  \draw[larratBicep!50] ([yshift = -0.35cm]interior.north west) -- (interior.north west);
-  \draw[larratBicep!35] ([yshift = -0.35cm]interior.north west) -- ([xshift = 0.45cm]interior.north west);
-  \draw[larratBicep!35] ([xshift = 0.45cm]interior.north west) -- (interior.north west);
+  \draw[larratBicep!30] ([yshift = -0.35cm]interior.north west) -- (interior.north west);
+  \draw[larratBicep!35!white!50] ([yshift = -0.35cm]interior.north west) -- ([xshift = 0.45cm]interior.north west);
+  \draw[larratBicep!35!white!50] ([xshift = 0.45cm]interior.north west) -- (interior.north west);
+}
+}
+
+\newtcolorbox[auto counter, number within=section]{remark}
+{title=Remark \ding{46} \\\noindent,drop lifted shadow=black,enhanced,colframe=yellow!25,colback=yellow!25!larratBicep!50,attach title to upper = {\ },
+breakable,
+coltitle=yellow!50!black,fonttitle=\upshape\bfseries,fontupper=\normalfont,
+sharp corners = all,boxrule = 0pt,
+underlay = {\draw[step=5mm,
+  draw = yellow!25!larratBicep!60] (interior.north east)
+grid (interior.south west);
+  \draw[larratBicep!35] ([xshift = 0.45cm]interior.north west) -- ([yshift = -0.28cm, xshift = 0.48cm]interior.north west); %  -----
+  \draw[larratBicep!35] ([yshift = -0.35cm]interior.north west) -- ([yshift = -0.28cm, xshift = 0.48cm]interior.north west); % -
+  \path[fill = yellow!50!larratBicep!50,drop shadow={opacity = 0.55, shadow xshift = .0ex, shadow yshift = -.4ex, shadow scale = 1, 
+   }]
+  ([xshift = 0.45cm]interior.north west) -- ([yshift = -0.28cm, xshift = 0.48cm]interior.north west) -- 
+     ([yshift = -0.35cm]interior.north west) -- ([xshift = 0.45cm]interior.north west) ;
+                                                                                                                                % -  x
+  \fill[fill=larratBicep!35!white!50] ([yshift = -0.35cm]interior.north west) -- ([xshift = 0.45cm]interior.north west) -- (interior.north west);
+
+  \draw[larratBicep!35] ([yshift = -0.35cm]interior.north west) -- (interior.north west);
+  \draw[larratBicep!35!white!50] ([yshift = -0.35cm]interior.north west) -- ([xshift = 0.45cm]interior.north west);
+  \draw[larratBicep!35!white!50] ([xshift = 0.45cm]interior.north west) -- (interior.north west);
 }
 }
 
@@ -221,11 +244,11 @@ grid (interior.south west);
   ([xshift = 0.45cm]interior.north west) -- ([yshift = -0.28cm, xshift = 0.48cm]interior.north west) -- 
      ([yshift = -0.35cm]interior.north west) -- ([xshift = 0.45cm]interior.north west) ;
                                                                                                                                 % -  x
-  \fill[fill=larratBicep!35] ([yshift = -0.35cm]interior.north west) -- ([xshift = 0.45cm]interior.north west) -- (interior.north west);
+  \fill[fill=larratBicep!35!white!50] ([yshift = -0.35cm]interior.north west) -- ([xshift = 0.45cm]interior.north west) -- (interior.north west);
 
-  \draw[larratBicep!50] ([yshift = -0.35cm]interior.north west) -- (interior.north west);
-  \draw[larratBicep!35] ([yshift = -0.35cm]interior.north west) -- ([xshift = 0.45cm]interior.north west);
-  \draw[larratBicep!35] ([xshift = 0.45cm]interior.north west) -- (interior.north west);
+  \draw[larratBicep!35] ([yshift = -0.35cm]interior.north west) -- (interior.north west);
+  \draw[larratBicep!35!white!50] ([yshift = -0.35cm]interior.north west) -- ([xshift = 0.45cm]interior.north west);
+  \draw[larratBicep!35!white!50] ([xshift = 0.45cm]interior.north west) -- (interior.north west);
 }
 }
 
