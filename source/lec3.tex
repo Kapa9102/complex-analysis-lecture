@@ -1,0 +1,322 @@
+% lec4.tex 
+\lecture{3}{08:14 AM Mon, Oct 13 2025}{} 
+\begin{example}
+The power series $\sum_{n=0}^{\infty} \frac{z^n }{n!}$ has 
+radius of convergence $R = +\infty  $. Therefore (by the previous Theorem), it defines an analytic function on the whole complex plane $\CC  $. 
+\end{example}
+\begin{definition}[]
+The analytic function on $\CC  $ defined by: 
+\[
+\exp{(z) }  = e^{z} := \sum_{n=0}^{\infty} \frac{z^n }{n!}
+\]
+is called \underline{the exponential function.}
+\end{definition}
+\begin{definition}[Entire function]
+  A complex function $ f : \CC  \longrightarrow \CC  $ which
+  is analytic on \underline{the whole complex plane $\CC  $} is called 
+  an \underline{\textcolor{purple}{entire function.}}
+\end{definition}
+\begin{example}
+  \begin{itemize}
+    \item[\ding{172}] Every complex 
+      polynomial is an \underline{entire function}.
+    \item[\ding{173}] The exponential 
+      function $\exp (z)    $ is an 
+      \underline{entire function}.
+  \end{itemize}
+\end{example}
+\subsection{Properties of the exponential function}
+\begin{proposition}[]
+The exponential function defines the following properties:
+\begin{enumerate}
+  \item[\ding{172}] $\forall z_1, z_2 \in   \CC$, we have:
+    \[
+    e^{z_1 + z_2} = e^{z_1} \cdot  e^{z_2} 
+    \text{  and  }  
+    e^{z_1 - z_2} = \frac{e^{z_1}}{e^{z_2}}.
+    \]
+  \item[\ding{173}] for all $z \in   \CC  $, we have $e^{z} \neq  0$. 
+  \item[\ding{174}] \textcolor{purple}{\textsc{(Euler's formula):} } $\forall  \theta \in   \RR$, we have:
+     \[
+     e^{i\theta} = \cos \theta + i \sin \theta    .
+     \]
+   \item[\ding{175}] $\forall  z \in  \CC  $, we have: 
+     \[
+     e^{z} = 1 \iff z \in  2 \pi i \mathbb{Z}.
+     \]
+     More generally, for all $z, z' \in  \CC$, we have: 
+     \[
+     e^{z} = e^{z'} \iff z - z' \in  2 \pi  \mathbb{Z}.
+     \]
+     So, the exponential function is periodic with period $2 \pi  i $.
+\end{enumerate}
+\end{proposition}
+\begin{proof}
+\item[\ding{50} \ding{172}] $\forall z_1, z_2 \in   \CC  $, we have
+  \begin{align*}
+    e^{z_1} \cdot  e^{z_2} &= \sum_{k=0}^{+\infty } \frac{z_1 ^{k}}{k!} 
+  \cdot \sum_{\ell = 0}^{ +\infty }  
+  \frac{z_2^{\ell }}{\ell !} \\ 
+                           &=
+                           \sum_{k, \ell \in   \NN_0}^{} 
+                           \frac{z_1^{k}z_2^{\ell }}{k! \ell !} \\
+                           &=
+                           \sum_{n=0}^{+\infty} 
+                           \left( 
+                             \sum_{k, \ell \in  \NN_0, k + \ell  = n}^{} 
+                             \frac{z_1^{k} z_2^{\ell }}{k! \ell !}
+                           \right)  \\
+                           &= 
+                           \sum_{n=0}^{+\infty} \left( 
+                             \sum_{k=0}^{n} 
+                             \frac{z_1^{k}z_2^{n-k}}{k!(n-k)!} 
+                           \right) \\
+                           &= 
+                           \sum_{n=0}^{+\infty} 
+                           \frac{1}{n!}
+                           \underbrace{
+                           \left( 
+                             \sum_{k=0}^{n} 
+                             \frac{n!}{k!(n-k) !} 
+                             z_1^{k} z_2^{n-k}
+                           \right) 
+                           }_{ = \sum_{k=0}^{n} \binom{n}{k} z_1^{k} z_2^{n-k} =(z_1 + z_2)^{n} }  
+                           \\
+                           &= 
+                           \sum_{n=0}^{+\infty} \frac{1}{n!}(z_1 + z_2) ^n = e^{z_1 + z_2},
+  \end{align*}
+next, we have: 
+\[
+  e^{z_1 - z_2} \cdot e^{z_2} \overset{\text{\tiny by the first formula}  }{ = } e^{z_1 - z_2 + z_2} = e^{z_1}.
+\]
+Hence $e^{z_1 - z_2} = \frac{e^{z_1}}{e^{z_2}},$ as required. 
+ \item[\ding{50} \ding{173}] 
+   For all $z \in   \CC  $, we have:
+   \[
+   e^{z} \cdot e^{-z} \overset{(1) }{=}  e^{z - z} = e^{0} = 1.
+   \]
+   Thus $e^{z} \neq 0 $.
+   \item[\ding{50} \ding{174}] \textcolor{purple}{\textsc{(Euler's Formula).}}  \\
+     For all $\theta \in  \RR  $, we have:
+     \begin{align*}
+       e^{i \theta} &= \sum_{n=0}^{+\infty} \frac{(i \theta) ^n }{n!} \\
+                    &= \sum_{n=0}^{+\infty} i^n \frac{\theta^n }{n!}
+     \\
+     &= 
+     \sum_{n \in  \NN_0, \text{ $n $ \tiny is even}  }^{} 
+     i^n \frac{\theta^n }{n!} + 
+     \sum_{n \in  \NN_0, \text{ $n $ \tiny is odd}  }^{} 
+     i^n \frac{\theta ^n }{n!} \\
+     &= \sum_{k=0}^{ +\infty } i^{2k} \frac{\theta^{2k}}{(2k) !} + 
+     \sum_{k=0}^{+\infty } i^{2k+1} \frac{\theta^{2k+1}}{(2k+1) !}
+     \\
+     &=
+     \underbrace{
+     \sum_{k=0}^{+\infty } 
+     (-1) ^{k} \frac{\theta^{2k}}{(2k)! }
+     }_{\cos \theta  }  + i 
+     \underbrace{
+     \sum_{k=0}^{+\infty } (-1) ^{k} \frac{\theta^{2k+1}}{(2k+1)! }}_{\sin \theta  } 
+     \\
+     &= \cos \theta + i \sin \theta,
+     \end{align*}
+     as required.
+ \item[\ding{50} \ding{175}] Let $z \in  \CC  $ and write
+   \[
+   z = x + iy \quad \quad (x, y \in  \RR) .
+   \]
+   we have
+   \begin{align*}
+     e^{z} &= e^{x +  i y} 
+        \\ & \overset{(1) }{=} e^{x} \cdot  e^{iy} \\
+           & \overset{(3) }{=} e^{x}(\cos y + i \sin y    )  \\
+           &= e^{x}\cos y + i e^{x} \sin  y.    
+   \end{align*}
+   Thus
+   \begin{align*}
+     e^{z } = 1 &\iff 
+   \begin{cases}
+   e^{x} \cos y = 1 \\
+   e^{x} \sin  y = 0  
+   \end{cases}
+    \iff 
+   \begin{cases}
+   \cos y = e^{-x} > 0 \\
+   \sin y = 0   
+   \end{cases} \\
+   & \iff 
+   \begin{cases}
+   \exists k \in   \mathbb{Z}: \quad y = 2 \pi  k \\
+   e^{-x} = \cos 2 \pi  k  = 1   
+   \end{cases} 
+    \iff \begin{cases}
+   \exists  k \in   \mathbb{Z}: \quad y = 2\pi  k \\
+   x = 0 
+   \end{cases} \\
+   &\iff z = 2\pi  k i \quad \quad ( k \in  \mathbb{Z})  \\
+   & \iff z \in   2 \pi  \mathbb{Z},
+   \end{align*}
+   as required.
+\end{proof}
+\subsection{Trigonometric and hyperbolic functions}
+\begin{definition}[Complex Trigonometric functions]
+  We define the trigonometric functions cosine and sine by:
+  \begin{align*}
+    \cos z &:= \sum_{n=0}^{+\infty} (-1) ^n \frac{z^{2n}}{(2n) !},   \\
+    \sin z &:= 
+    \sum_{n=0}^{+\infty} (-1) ^n \frac{z^{2n+1}}{(2n+1) !} \quad \quad (\forall  z \in   \CC ).
+  \end{align*}
+  Clearly, these functions extend the real functions cos and sin. The power series defining cos and sin have infinite
+  radius of convergence, thus (By a previous theorem) cos and sin are analytic on $\CC  $; that is, cos and sin are 
+  \underline{
+  entire functions.
+  }
+\end{definition}
+\begin{remark}
+  We easily verify the extended Euler's formula: 
+  \[
+  e^{iz} = \cos z + i \sin z \quad \quad ( \forall  z \in   \CC ) .    
+  \]
+  From this formula, we derive: 
+  \begin{align*}
+    \cos z &= \frac{e^{iz} + e^{-iz}}{2}, \\
+    \sin z &= \frac{e^{iz} - e^{-iz}}{2i} \quad \quad (\forall  z \in   \CC ).
+  \end{align*}
+\end{remark}
+  \marginpar{These functions are not bounded in $\CC  $, when you replace $x \leftarrow ix $, you get 
+  $\cos ix   = \cosh x   $.}
+\exercise
+Using property \ding{175} of \it Proposition 1.3.2 \normalfont and Euler's formula, show the following 
+properties:
+\begin{itemize}
+  \item[\ding{172}] The functions $\cos    $ and $\sin    $ are both $2\pi  $-periodic.
+ \item[\ding{173}] The set of zeros of $z \mapsto \cos z   $ is $(\frac{\pi }{2} + \pi  \mathbb{Z})  $, while
+   the set of zeros of $ z \mapsto \sin z   $ is $\pi  \mathbb{Z}$. 
+ \item[\ding{174}] For all $z \in  \CC  $, we have
+   \[
+   \cos ^2 z + \sin ^2  z = 1  .
+   \]
+\end{itemize}
+\underline{\ding{43} \textsc{For Example, for \ding{174}: }}By the Euler formula, we have for all $z \in  \CC  $: 
+\begin{align*}
+  \cos ^2  z + \sin ^2  z &= 
+  \left( \frac{e^{iz} + e^{-iz}}{2} \right) ^2  + 
+  \left( \frac{e^{iz} - e^{-iz}}{2i} \right) ^2  \\
+                          &= \frac{4}{4} = 1 
+\end{align*}
+\begin{definition}[Complex hyperbolic functions]
+  We define the hyperbolic functions cosh and sinh by: 
+  \begin{align*}
+    \cosh z &:= 
+    \sum_{n=0}^{+\infty} \frac{z^{2n}}{(2n) !} 
+    = \frac{e^{z} + e^{-z}}{2} = \cos (iz) , \\
+    \sinh z &:=
+    \sum_{n=0}^{+\infty} \frac{z^{2n+1}}{(2n+1) !} =
+    \frac{e^{z} - e^{-z}}{2} = - i \sin (iz)  \quad \quad 
+    (\forall z \in   \CC ).
+  \end{align*}
+  Clearly, these definitions extend the real functions cosh and sinh. Like the trigonometric functions
+  cos and sin, the hyperbolic functions cosh and sinh are also \underline{entire functions.}
+\end{definition}
+\exercise
+Using the expressions of cosh and sinh in terms of cos and sin, verify the following properties:
+\begin{itemize}
+  \item[\ding{172}] The functions cosh and sinh are both $2\pi-$periodic.
+   \item[\ding{173}] The set of zeros of cosh is 
+     $(\frac{\pi }{2}i + \pi i \mathbb{Z})$, while the set of zeros of sinh is $\pi  i \mathbb{Z} $ .
+    \item[\ding{174}] For all $z \in  \CC  $, we have
+      \[
+        \cosh ^2 z - \sinh ^2  z = 1.
+      \]
+\end{itemize}
+\begin{definition}[Further trigonometric and hyperbolic functions]
+  We define the following functions:
+  \begin{align*}
+    \tan z &:= \frac{\sin z  }{\cos z  } \quad \quad 
+    \left( 
+    \forall z \in  \CC \backslash 
+    \left( 
+   \frac{\pi }{2} + \pi \mathbb{Z} 
+    \right) 
+    \right),
+    \\
+    \cot z  &:= \frac{\cos  z}{\sin z  } \quad \quad 
+    \left( 
+    \forall z \in  \CC \backslash \pi  \mathbb{Z} 
+    \right),
+    \\
+    \tanh z &:= \frac{\sinh z  }{\cosh z  }   \quad \quad 
+    \left( 
+    \forall z \in   \CC \backslash 
+      \left( 
+    \frac{\pi }{2} i + 
+    \pi i \mathbb{Z}
+      \right) 
+    \right), 
+    \\
+    \coth z &:= \frac{\cosh z  }{\sinh z  }\quad \quad (\forall z \in  \CC  \backslash  \pi  i \mathbb{Z}) .
+  \end{align*}
+  This clearly extends the well-known real functions tan, cot, tanh, and coth. Note that each of these four functions
+  is analytic in its domain of definition (according to the previous results on analytic functions).
+\end{definition}
+\section{Holomorph functions}
+\begin{definition}[]
+Let $\Omega  $ be a nonempty open subset of $\CC  $ and $z_0 $ be a point in $\Omega  $. Let also
+$ f : \Omega  \longrightarrow \CC  $ be a map. 
+\begin{itemize}
+  \item 
+We say that $f $ is \underline{holomorphic} at $z_0 $ 
+if the limit
+\[
+  \lim_{z \to z_0} \frac{f(z)  - f(z_0) }{z-z_0}
+\]
+exists and belong to $\CC$. In this case, the limit is called the \underline{derivative} of $f $ at the point
+$z_0 $ and denoted by $f'(z_0)  $. 
+\end{itemize}
+\begin{itemize}
+  \item We say that $f $ is \underline{holomorphic on $\Omega  $ } if it is holomorphic at every point 
+    in $\Omega  $. \\ In this case, the function
+    \[
+    \begin{array}{cccc}
+          f' : &  \Omega   & \longrightarrow & \CC  \\
+    
+               &  z  & \longmapsto     & f'(z)  \\ 
+    \end{array}
+    \]
+    is called the derivative of $f$. 
+\end{itemize}
+\end{definition}
+\begin{proposition}[Holomorphy of power series]
+  Let $z_0 \in  \CC  $, $(a_n ) _{n \in   \NN_0} \subset \CC $, and $S $ be the power series
+  \[
+  S(z)  = \sum_{n=0}^{+\infty} a_n (z-z_0) ^n.
+  \]
+  Suppose that $S $ has a positive radius of convergence $R $. Then $S $ is holomorphic on 
+  $D(z_0, R)  $ and we have for all $z \in  D(z_0, R):$
+  \begin{align*}
+    S'(z)  &= \sum_{n=0}^{+\infty} n a_n (z-z_0) ^{n-1} \\
+           &= \sum_{n=0}^{+\infty} (n+1) a_{n+1} (z-z_0) ^n .
+  \end{align*}
+\end{proposition}
+\begin{proof}
+For simplicity, suppose without loss of generality that $z_0 = 0 $. First, remark that 
+by using the Hadamard formula, the power series
+\[
+\sum_{n=1}^{+\infty}  n a_n z^{n-1} = \sum_{n=0}^{+\infty} (n+1) a_{n+1} 
+z^n 
+\]
+has the same radius of convergence $R $ as $S $. It follows that $\sum_{n=1}^{+\infty} n a_n z^{n-1}$ is absolutely
+convergent on $D(0, R)$; That is, for all $0 <  r < R$, the series $\sum_{n=1}^{+\infty} n \left| a_n  \right|  z^{n-1}$  converges. 
+Now, let $z_1 \in  D(0, R)$ be arbitrary and show that $S $ is holomorphic at $z_1.$ Choose 
+$r \in  \RR  $ such that $\left| z_1  \right|  <  r < R$. For all $z \in   D(0, r)  \backslash  \left\{ z_1 \right\}$, we have
+\begin{align*}
+  \frac{S(z) - S(z_1)  }{z - z_1} &= 
+  \frac{\sum_{n=0}^{+\infty} a _n z^n  - \sum_{n=0}^{+\infty} a_n z_1^n }{ z - z_1} \\
+                                  &= 
+                                  \sum_{n=0}^{+\infty} a_n  \frac{z^n - z_1^n }{z - z_1} \\
+                                  &= 
+                                  \sum_{n=1}^{+\infty} a_n 
+                                  \sum_{k=0}^{n-1} z^{k} z_1^{n-1-k}.
+\end{align*}
+\end{proof}
+% end of file
