@@ -306,7 +306,7 @@ by using the Hadamard formula, the power series
 z^n 
 \]
 has the same radius of convergence $R $ as $S $. It follows that $\sum_{n=1}^{+\infty} n a_n z^{n-1}$ is absolutely
-convergent on $D(0, R)$; That is, for all $0 <  r < R$, the series $\sum_{n=1}^{+\infty} n \left| a_n  \right|  z^{n-1}$  converges. 
+convergent on $D(0, R)$; That is, for all $0 <  r < R$, the series $\sum_{n=1}^{+\infty} n \left| a_n  \right|  r^{n-1}$  converges. 
 Now, let $z_1 \in  D(0, R)$ be arbitrary and show that $S $ is holomorphic at $z_1.$ Choose 
 $r \in  \RR  $ such that $\left| z_1  \right|  <  r < R$. For all $z \in   D(0, r)  \backslash  \left\{ z_1 \right\}$, we have
 \begin{align*}
@@ -316,7 +316,59 @@ $r \in  \RR  $ such that $\left| z_1  \right|  <  r < R$. For all $z \in   D(0, 
                                   \sum_{n=0}^{+\infty} a_n  \frac{z^n - z_1^n }{z - z_1} \\
                                   &= 
                                   \sum_{n=1}^{+\infty} a_n 
-                                  \sum_{k=0}^{n-1} z^{k} z_1^{n-1-k}.
+                                  \sum_{k=0}^{n-1} z^{k} z_1^{n-1-k}
+                                  \\
+                                  &= 
+                                  \sum_{n=1}^{+\infty } 
+                                  a_n  \sum_{k=0}^{n-1} z^k  z_1^{n-1-k} \quad \quad (*). 
 \end{align*}
+Next, we show that this last series of functions converges normally on $D(0, r) \backslash  \left\{ z_1 \right\} $. For 
+$z \in   D(0, r) \backslash \left\{ z_1 \right\} $, 
+we have:
+\begin{align*}
+\left| a_n \sum_{k=0}^{n-1} z^{k} z_1^{n-1-k} \right|  
+& \leq 
+\left| a_n  \right|  \sum_{k=0}^{n-1} 
+\underbrace{\left| z \right| ^k }_{ <  r }
+  \underbrace{\left| z_1 \right| ^{n-1-k}}_{ <  r}  \\
+& \leq 
+\left| a_n  \right|  \sum_{k=0}^{n-1} 
+r^{n-1}\\
+& = n \left| a_n  \right|  r^{n-1} 
+\quad \quad \text{(independent on $z $).}  
+\end{align*}
+Since the series $\sum_{n=1}^{+\infty} n \left| a_n  \right|  r^{n-1} $ converges (as explained at the beginning of this of
+this proof) then the series of function 
+$\sum_{n=1}^{+\infty} a_n \sum_{k=0}^{n-1} z^k z_1^{n-1-k} $ converges normally (no uniformally) on $D(0, r)  \backslash  \left\{ z_1 \right\} $. Therefore, we can interchange the limit
+as $z \rightarrow z_1 $ and the summation for computing \\
+$\lim_{z \to z_1} \sum_{n=1}^{+\infty } 
+\sum_{k=0}^{n-1} z^k z_1^{n-1-k}$. Doing so, we get 
+according to ($*$);
+\begin{align*}
+\lim_{z \to z_1} 
+\frac{S(z) - S(z_1) }{z - z_1} &= 
+\sum_{n=1}^{+\infty } \lim_{z \to z_1} a_n 
+\sum_{k=0}^{n-1} z^k z_1^{n-1-k} \\
+                               &= 
+                               \sum_{n=1}^{+\infty } a_n 
+                               \sum_{k=0}^{n-1} z_1^k z_1^{n-1-k} \\
+                               &=
+                               \sum_{n=1}^{+\infty } n a_n z_1^{n-1} \in  \CC .
+\end{align*}
+Hence $S $ is holomorphic at $z_1 $ and we have
+\begin{align*}
+S'(z_1)  &= 
+\sum_{n=1}^{+\infty } 
+n a_n z_1^{n-1} \\
+         &= 
+         \sum_{n=0}^{+\infty} (n+1) a_{n+1}z_1^n.
+\end{align*}
+Since $z_1 $ is arbitrary in $D(0, R)  $ then $S $ is holomorphic 
+on $D(0, R)  $ and we have for all $z \in   D(0, R) : $ 
+\[
+S'(z)  = 
+\sum_{n \geq 1}^{} n 
+a_n z^{n-1} = \sum_{n=0}^{+\infty} (n+1) a_{n+1}z^n .
+\]
 \end{proof}
 % end of file

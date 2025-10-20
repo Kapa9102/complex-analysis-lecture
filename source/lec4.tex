@@ -1,0 +1,197 @@
+% lec4.tex 
+\lecture{4}{08:04 AM Mon, Oct 20 2025}{} 
+\begin{corollary}[Infinite differentiability of power series]
+Let $z_0 \in  \CC, (a_n ) _{n \in  \NN_0} \subset \CC  $, and $S $ be the power series
+\[
+S(z) := 
+\sum_{n=0}^{+\infty} a_n (z-z_0) ^n .
+\]
+Suppose that $S $ has a positive radius of convergence $R $. Then $S $ is infinitely $\CC - $differentiable  on
+$D(z_0, R)  $ and we have for all $k \in  \NN_0 $ and all $z \in  D(z_0, R)$: 
+\begin{align*}
+  S^{(k) }(z)  &= 
+\sum_{n=k}^{+\infty } 
+n(n-1) \hdots (n - k +1) a _n (z-z_0) ^{n-k} \\
+& = \sum_{n=0}^{+\infty} (n+k) (n+k-1)  \hdots (n+1)  a_{n+k}(z-z_0) ^n \\
+& = \sum_{n=0}^{+\infty} \frac{(n+k) !}{n!}a_{n+k}(z-z_0) ^n.
+\end{align*}
+In particular, we have for all $k \in  \NN_0: $ 
+\[
+  S^{(k) }(z_0)  = k!a_k .
+\]
+\end{corollary}
+\begin{corollary}[Analytic functions are $\CC$-infintely differentiable]
+  Let $\Omega $ be a nonempty open subset of $\CC  $ and $z_0 \in  \Omega $. Let also
+  $ f : \Omega \longrightarrow \CC  $ be a map.
+  \begin{itemize}
+    \item [\ding{172} ] If $f $ is analytic at $z_0 $ then $f $ is infinitely $\CC  $-differentiable 
+      (no holomorphic) on some neighborhood of $z_0$ and we have in that neighborhood:
+      \begin{center}
+      \begin{tcolorbox}[boxrule=1pt, colback=larratBicep!60, sharp corners, width=6cm, height=2cm, top=-0.1cm]
+      \[
+      f(z)  = \sum_{n=0}^{+\infty} \frac{f^{(n) }(z_0) }{n!}(z-z_0) ^n 
+      \]
+      \end{tcolorbox}
+      \textcolor{purple}{\textsc{Taylor's formula}}
+      \end{center}
+    \item [\ding{173} ] If $f$  is analytic on $\Omega $ then $f $ is infinitely $\CC  $-differentiable 
+      (so holomorphic) on $\Omega $.
+  \end{itemize}
+\end{corollary}
+\begin{proof}
+  Represent $f $ by a power series in $S $ in a neighborhood of $z_0 $ and apply Corollary 3.
+\end{proof}
+\begin{remark}
+  \[
+    \text{Analytic }  \implies \text{ holomorphic}  
+  \]
+  \begin{itemize}
+    \item [\ding{173} ] \textsc{Cauchy }\it (1825):\normalfont\\
+      $f_n$ holomorphic + $f' $ is continuous $ \implies  $ $f $ is analytic. 
+    \item [\ding{174} ] \textsc{Goursat }\it (1900):\normalfont\\
+      $f $ is holomorphic $ \implies  $ $f $ is analytic.
+  \end{itemize}
+\end{remark}
+\begin{definition}[]
+Let $\Omega $ be a nonempty open subset of $\CC  $ and $ f : \Omega \longrightarrow \CC  $ 
+be a map. An antiderivative of $f $ is a holomorphic function $ F : \Omega \longrightarrow \CC  $ such that 
+$F'  = f $.
+\end{definition}
+\begin{proposition}[Existence of Local antiderivatives]
+  Let $\Omega $ be a nonempty open subset of $\CC  $ and $z_0 \in  \Omega $. Let also
+  $ f : \Omega \longrightarrow \CC   $ be a map. If $f $ 
+  is analytic at $z_0 $ then $f $ admits an antiderivative in a neighborhood of $z_0 $. Precisely, 
+  $\exists  r > 0 $ and $ F : D(z_0, r)  \longrightarrow \CC  $ analytic such that 
+  $F'(z) = f(z)  $ for all $z \in  D(z_0, r)$. 
+\end{proposition}
+\begin{proof}
+  Suppose that $f $ is analytic at $z_0 $. then $\exists  r > 0, \exists (a_n ) _{n \in  \NN_0} \subset \CC $ such that 
+  for all $z \in   D(z_0, r)$: 
+  \[
+  f(z)  = \sum_{n=0}^{+\infty} a_n (z-z_0) ^n .
+  \]
+  Define $ F : D(z_0, r)  \longrightarrow \CC  $ by 
+  \[
+  F(z)  = \sum_{n=0}^{+\infty} \frac{a_n }{n+1} ( z-z_0) ^{n+1} = 
+  \sum_{n=1}^{+\infty } \frac{a _{n-1}}{n} (z-z_0) ^n  \quad \quad ( \forall z \in   D(z_0, r) ).
+  \]
+  The Hadamard formula shows that this last power series has the name radius of convergence
+  as the original power series $\sum_{n=0}^{+\infty} a_n  (z-z_0) ^n  $ representing $f $ (which is $ \geq r $). 
+  Consequently, $F $ is well-defined on $D(z_0, r)  $, and by the previous results, $F $ is even 
+  analytic on $D(z_0, r)  $ so holomorphic on $D(z_0, r)  $ and for all $z \in  D(z_0, r)  $:
+  \begin{align*}
+    F'(z)  &= 
+    \sum_{n=1}^{+\infty } 
+    \frac{a_{n-1}}{n} n 
+    (z-z_0) ^{n-1} \\
+           &= 
+           \sum_{n=1}^{+\infty }  
+           a_{n-1}(z-z_0) ^{n-1} \\
+           &= \sum_{n=0}^{+\infty} a_n (z-z_0) ^n =  f(z) .
+  \end{align*}
+  Thus, $F $ is an antiderivative of $f $ on $D(z_0, r)  $, completing the proof.
+\end{proof}
+\begin{remark}
+  The rules of differentiation for analytic/holomorphic functions are the same as those of real-valued
+  functions. For example:
+  \begin{align*}
+    (fg) ' &= f' g + f g' \\
+    (f \circ  g) &= g' \cdot (f' \circ g) .
+  \end{align*}
+  On the other hand, the derivatives of known elementary functions, such that 
+  $z \rightarrow e^{z}$,\\$ z \rightarrow \cos z$,$ z \rightarrow \sin z   $, etc are
+  the same as in the real case. For example:
+  \begin{align*}
+    (e^{z}) ' &= e^{z}  \quad \quad (\forall  z \in  \CC ) \\
+    (\sin z) ' &= \cos z  \quad \quad (\forall  z \in   \CC ) 
+  \end{align*}
+\end{remark}
+\begin{proof}
+  \[
+  e^{z} = \sum_{n=0}^{+\infty} \frac{z^n }{n!}\quad \quad R = +\infty .
+  \]
+  \begin{align*}
+    (e^{z}) ' &= \sum_{n=1}^{+\infty} 
+    \frac{n}{n!}z^{n-1} \\
+              &= \sum_{n=1}^{+\infty } 
+              \frac{z^{n-1}}{(n-1) !} \\
+              &= 
+              \sum_{n=0}^{+\infty} \frac{z^{n}}{n!} = e^{z}.
+  \end{align*}
+\end{proof}
+\section{The Cauchy-Riemann equations}
+\begin{theorem}[Cauchy-Riemann equations]
+  Let $\Omega $ be a nonempty open subset of $\CC  $, $z_0 = x_0 + iy_0$ with $(x_0, y_0 \in  \CC)$ a point in 
+  $\Omega $, and $ f : \Omega \longrightarrow \CC  $ be a map. Let $ P : \text{Re} f : \Omega \longrightarrow \RR  $ and
+  $ Q : \text{Im}  f : \Omega\longrightarrow  \RR $ so that 
+  \[
+  f(z)  = P(x, y)  + iQ(x, y).
+  \]
+  for all $z = x + iy \in  \Omega $, with $x, y \in  \RR$ then $f $ is holomorphic at 
+  $z_0 $ if and only if $P $ and $Q $ are differentiable at $(x_0, y_0)  $ and satisfy the following 
+  Cauchy-Riemann equations at $(x_0, y_0):$ 
+  \[
+  \begin{cases}
+    \frac{\partial P}{\partial x} (x_0, y_0)  = \frac{\partial Q}{\partial y} (x_0, y_0) \\
+    \frac{\partial P}{\partial y} (x_0, y_0)  = - \frac{\partial Q}{\partial x} (x_0, y_0) 
+  \end{cases}
+  \]
+\end{theorem}
+\begin{proof}
+  \[
+    ( \implies ) 
+  \]
+  Suppose that $f $ in holomorphic at $z_0 $. Then for $h = u + iv \quad (u, v \in  \RR )$, sufficiently small, we have:
+  \[
+  f(z_0 + h)  = f(z_0)  +  \cosh  + o(h),
+  \]
+  with $c = c_1 + ic_2 \in  \CC \quad (c_1, c_2 \in  \RR).$ expanding this, we find:
+  \begin{align*}
+  P(x_0 + u, y_0 + v)  + i Q(x_0 + u, y_0 + v)  = 
+  P(x_0, y_0) + i Q(x_0, y_0) + (c_1 + i c_2)(u + iv)  + o (u, v).
+  \end{align*}
+  Identifying real and imaginary parts gives:
+  \begin{align*}
+    P(x_0 + u, y_0 + v)  &= 
+  P(x_0, y_0)  + c_1 u - c_2 v + o(u, v),  \\
+    Q(x_0 + u, y_0 + r) &= Q(x_0, y_0)  + 
+    c_2 u + c_1 v + o(u, v).
+  \end{align*}
+  \[
+  \frac{\partial P}{\partial x} (x_0, y_0)  = c_1, \quad 
+  \frac{\partial P}{\partial y} (x_0, y_0)  = -c_2, \quad 
+  \frac{\partial Q}{\partial x} (x_0, y_0)  = c_2, 
+  \quad 
+  \frac{\partial Q}{\partial y} (x_0, y_0) = c_1.
+  \]
+  Thus, $P $ and $Q $ indeed satisfying the 
+  the Cauchy-Riemann condition at $(x_0, y_0).$ 
+  \[
+    ( \impliedby ) 
+  \]
+  % baleful
+  Conversly, suppose that $P $ and $Q $  are differentiable at $(x_0, y_0)$  
+  and satisfy the Cauchy-Riemann conditions at this point. Set
+  \begin{align*}
+    c_1 &:= \frac{\partial P}{\partial x} (x_0, y_0)  = 
+    \frac{\partial Q}{\partial y} (x_0, y_0) \in  \RR \\
+    c_2 &:= \frac{\partial Q}{\partial x} (x_0, y_0)  = 
+    - \frac{\partial f}{\partial y} (x_0, y_0)  \in  \RR 
+  \end{align*}
+  By hypothesis, for $(u, v) \in   \RR ^2  $ sufficiently small, we have: 
+  \begin{align*}
+    P(x_0 + u, y_0 + v)  &= 
+    P(x_0 + y_0)  + c_1 u - c_2 v + o (u, v) \\
+    Q(x_0 + u, y_0 + v)  &= 
+    Q(x_0, y_0)  + c_2 u + c_1 v + o(u, v) .
+  \end{align*}
+  Then, setting $h = u + iv $:
+  \begin{align*}
+    f(z_0 + h) &= P(x_0 + u, y_0 + v)  + iQ(x_0 + u , y_0 + v)  \\
+               &= P(x_0 , y_0)  + iQ(x_0, y_0)  + \underbrace{(c_1 + ic_2)
+               }_{c} (u + iv) + o(u, v)  \\
+               &=  f(z_0) + ch  + o(h),
+  \end{align*}
+  with $c = c_1 + ic_2 $. This shows that $f $ is holomorphic at $z_0 $. The theorem is proved.
+\end{proof}
+% end of file
