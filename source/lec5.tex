@@ -1,0 +1,250 @@
+% lec5.tex 
+\lecture{5}{14:41 PM Tue, Oct 21 2025}{} 
+\begin{corollary}[Cauchy-Riemann equations on an open set]
+  Let $\Omega$ be an open subset of $\CC $ and $ f : \Omega \longrightarrow \CC  $ be a map. Let 
+  $P := \text{Re}  f :  \Omega\longrightarrow  \RR $ and $Q := \text{Im}  f :  \Omega\longrightarrow  \RR $, so that
+  \[
+  f(z)  = P(x, y)  + i Q(x, y)
+  \]
+  for all $z = x + iy \in  \Omega$, with $x,y \in   \RR $. Then $f$ is holomorphic on $\Omega$ if and only if $P$ 
+  and $Q$ are differentiable on $\Omega$ and satisfy the following Cauchy-Riemann equations:
+  \begin{align*}
+    \frac{\partial P}{\partial x}  &= \frac{\partial Q}{\partial y}, \\
+    \frac{\partial P}{\partial y}  &= - \frac{\partial Q}{\partial x},
+  \end{align*}
+  on $\Omega$.
+\end{corollary}
+\subsection{The isolated zeros thereom}
+\noindent \textcolor{larratBicep!10!brown}{
+  \uline{ 
+    \large \emph{ \ding{43} Some toplogical remainders:}
+  }
+}\\
+\begin{definition}[Limit points]
+  Let $E$ be a toplogical space,
+  $A \subset E$, $x \in   E$. we say that $x$ is
+  a \underline{limit point} of $A$ if every
+  neighborhood of $x$ intersect $A$ in a point 
+  different from $x$; That is, 
+  \[
+  \forall V \in   \mathcal{V} (x) : 
+  \quad V \cap \left( A \backslash  \left\{ x \right\} \right) 
+  \neq  \emptyset .
+  \]
+  Note that this is equivallent to $x \in  \overline{A \backslash  \left\{ x \right\}}$. The set
+  of all limit points of $A$ is denoted by $A'$ and is called the derived set of $A$.
+\end{definition}
+\ding{49} In metric spaces, we have the following equivallent definition:
+\begin{definition}[]
+  Let $E$ be a metric space, $A \subset E$, and $x \in   E$. We say that $x$ 
+  is a \underline{limit point} of $A$ if there exists a sequence $(x_n ) _{n \in  \NN}$ 
+  in $A \backslash  \left\{ x \right\}$ that converges to $x$ .
+\end{definition}
+\divider
+\begin{definition}[]
+Let $E$ be a toplogical space and $A \subset E$. 
+\begin{itemize}
+  \item[\ding{172} ] We say that an element $a \in   A$ is \underline{isolated} if its not a limit point of 
+    $A$.
+  \item [\ding{173} ] We say that $A$ is a discrete set if all its points are isolated.
+\end{itemize}
+\end{definition}
+\begin{example}
+The set $\NN$ and $\mathbb{Z}$ are discete in $\RR $, whereas the set $\mathbb{Q}$ is not (even though its countable).
+\end{example}
+\begin{proposition}[]
+In $\RR ^n (n \in  \NN)  $, every discrete set is at most countable.
+\end{proposition}
+\begin{proof}
+  \ding{49} Exercise !
+\end{proof}
+\begin{theorem}[The isolated zeros theorem]
+  Let $\Omega$ be a nonempty connected open set in $\CC $ and let $f$ be a an analytic function on $\Omega$ that is 
+  not identically zero. Then the zero of $f$ in $\Omega$ are all isolated; In other words, the set of zeros of $f$ in
+  $\Omega$ is discrete.
+\end{theorem}
+\begin{proof}
+We proceed by contradiction. Suppose that there exists a zero $z_0 \in   \Omega$ of $f$ that is not isolated; 
+i.e., $z_0$ is a limit point of the set of all zeros of $f$ in $\Omega$. Therefore, there exists a sequence 
+$(z_k ) _{k \geq 1}$ of zeros of $f$ in $\Omega$, with all terms distinct from $z_0$, that converges to $z_0$. Since
+$f$ is analytic at $z_0$, $\exists  r > 0$ and a power series representation:
+\[
+f(z) = \sum_{n=0}^{+\infty} a_n (z-z_0) ^n \quad \quad (\forall  z \in   D(z_0, r) ) 
+\]
+with $a_n  \in   \CC $ for all $n \in  \NN_0$.
+\begin{itemize}
+  \item [\ding{50}\ding{172} ] Let us first show that the coefficients $ a _n (n \in  \NN) $ must necessarily
+    all be zero. We proceed by contradictiom, assuming the contrary, and consider
+    \[
+    P := \min \left\{ n \in  \NN_0: a_n \neq 0 \right\}.
+    \]
+    We then have for all $z \in   D(z_0, r):$ 
+    \begin{align*}
+      f(z)  &= 
+      \sum_{n=p}^{+\infty } 
+      a_n (z-z_0) ^n  \\
+            &= (z-z_0) ^{p} \left[ a_{p} + a_{p+1}(z-z_0)  + a_{p+2}(z-z_0) ^2  \right] \\
+            &= (z-z_0) ^{p} \sum_{n=0}^{+\infty} a_{n+p} (z-z_0) ^n.
+    \end{align*}
+    By specializing to $z = z_k $ (for $k$ sufficiently large so that $z_k \in  D(z_0, r)$) we find that 
+    (for $k \geq 1$ sufficiently large): 
+    \[
+    \underbrace{f(z_k )
+    }_{=0}  = \underbrace{(z_k  - z_0)^{p}
+    }_{\neq 0}   \sum_{n=0}^{+\infty} a_{n+p}(z_k -z_0) ^n.
+    \]
+    Hence
+    \[
+    \sum_{n=0}^{+\infty} a_{n+p} (z_k -z_0) ^n = 0 ,
+    \]
+    taking the limit as $k \rightarrow +\infty$ and noting the normal convergence 
+    of the series on the left, we obtain: $a_{p} = 0.$  This contradicts the definition of $p$ and shows that 
+    $a_n = 0$ for all $n \in  \NN_0$. In follows from this that: 
+    \[
+    f(z)  = 0 \quad \quad (\forall  z \in   D(z_0, r) ).
+    \]
+  \item [ \ding{50} \ding{173} ] Now, we will show that $f$ is identically zero on all $\Omega$, which 
+    will yield the desired contradiction. Let $\omega \in  \Omega$ be arbitrary and show that $f(\omega) =  0.$ 
+    Since $\Omega$ is connected (no path-connected, as its an open subset of $\CC $), there exists a continuous 
+    path $ \gamma  : [0,1] \longrightarrow \Omega $ such that $\gamma (0) = z_0$ and $\gamma (1)  = \omega$. Consider
+    \[
+    t_0 := \sup \left\{ t \in   \left[ 0, 1 \right]: (f \circ  \gamma ) (t) = 0 \right\} 
+    \]
+    The supremum exists because the set is non empty, as it contains $0$, and it is bounded from above by $1$. Since $f$ 
+    and $\gamma $ are continuous, the function $f \circ \gamma $  are continuous on $\left[ 0, 1 \right]$. Consequently, 
+    the set 
+    \[
+      \left\{ t \in  [0, 1]: (f \circ \gamma ) (t) =  0 \right\} = 
+      \left( f \circ  \gamma  \right) ^{-1} \left( \left\{ 0 \right\} \right) 
+    \]
+    which is closed in $[0, 1]$. Thereforem $t_0$ belongs to this set; in other words, we have
+    \[
+    \left( f \circ \gamma  \right) (t_0) = 0 \quad \quad (1) 
+    \]
+    Let us show that $t_0  = 1$. Suppose for contradiction, that $t_0 <  1$. By the reasoning from the previous 
+    part of this proof (replacing $z_0 $ by $\gamma (t_0)$, which is a limit point of the zero of $f$), 
+    there exists $r' > 0$ such that 
+    \[
+    f(z)  = 0 \quad \quad (\forall  z \in   D(\gamma (t_0), r') ) .
+    \]
+    FOr $\veps  > 0$, sufficiently small, we have: 
+    \[
+    \gamma (t_0 + \veps ) \in  D(\gamma (t_0), r'),
+    \]
+    (by the continuity of $\gamma $). Therefore: 
+    \[
+    g(\gamma (t_0 + \veps ) ) = 0,
+    \]
+    i.e. $(f \circ  \gamma ) ( t_0  + \veps )  = 0.$
+    This contradicts the very definition of $t_0$ as the supremum. Hence, necessarily $t_0 = 1$. This gives, from 
+    $(1) $, $f (\omega) = 0$. Since $\omega$ was arbitrary in $\Omega$, we have $f \equiv  0$ on $\Omega$. Contradiction. This 
+    final contradiction ensures that the zeros of $f$ in $\Omega$ are all isolated. The theorem is proved. 
+    \texttt{there is a tiny error in this proof, will be fixed next time.}
+\end{itemize}
+\end{proof}
+\begin{corollary}[Principle of analytic continuation]
+  Let $f$ and $g$ be two analytic functions on a nonempty \underline{connected} open subset 
+  $\Omega$ of $\CC $ that coincide on a subset $A \subset \Omega$ pocessing a limit point in $\Omega$. Then 
+  $f$ and $g$ are identical on $\Omega$.
+\end{corollary}
+\begin{proof}
+Let $\FF := f - g$. Then $\FF$ is analytic on $\Omega$ and vanishes on the set $A \subset \Omega$, which has a limit
+point $a \in  \Omega$. So $a \in  \overline{A \backslash  \left\{ a \right\}} \subset \overline{A}$. Since 
+$\FF$ vanishes on $A$ and is continuous on $\Omega$, then it vanishes on $\overline{A} \cap \Omega$. In particular, 
+$\FF$ vanishes at $a.$ Therefore, $a$ is a non-isolated
+zero of $\FF$. By the isolated zero theorem, this implies
+that $\FF \equiv 0$ on $\Omega$; That is, 
+$f \equiv g$ on $\Omega$.
+\end{proof}
+\begin{example}
+Let us show that (without using the extended Euler
+formulas) that for all $z \in   \CC $, we have: 
+\[
+\cos ^2  z + \sin  ^2  z = 1.    
+\]
+consider $f(z)  := \cos ^2  z + \sin ^2  z    $ and $g(z) := 1$. $f$ and $g$ are analytic 
+on $\CC $ (which is an connected open subset of $\CC $) and coincide on $\RR $, which pocesses a limit point 
+in $\CC $. Thus, by the principle of analytic continuation $f \equiv g$ on $\CC $; i.e. 
+\[
+\cos ^2 z + \sin ^2  z = 1 \quad \quad (\forall  z \in   \CC ) .
+\]
+\end{example}
+\subsection{Multiplicity of a zero of an analytic function}
+\begin{theorem}[]
+  Let $\Omega$ be a nonempty connected open subset of $\CC $,
+  and let $f$ be an analytic function on $\Omega$, not identically zero. Let $z_0 \in   \Omega$ be a zero of $f$. Then there exists a unique
+  positive integer $p$ and a unique analytic function 
+  $g$ on $\Omega$ does not vanish at $z_0$, such that
+  \[
+  f(z)  = (z-z_0) ^{p}g(z)  \quad \quad 
+  (\forall  z \in   \Omega) 
+  \]
+\end{theorem}
+\begin{proof}
+\underline{\ding{50} \textbf{Existence of $p$ and $g$ :}} \\
+Since $f$ is analytic at $z_0$, $\exists  r > 0$ and a complex sequence $(a_n ) _{n \in  \NN_0}$ such that 
+$D(z_0, r ) \subset \Omega$  and 
+\[
+f(z)  = \sum_{n=0}^{+\infty} a_n (z-z_0) ^n \quad \quad (\forall  z \in   D(z_0, r) ).
+\]
+Since $f$ is not identically zero on $\Omega$, it is certainly not identically zero on $D(z_0, r)$ (By the isolated zeros 
+theorem). Thus the coefficients $a_n $ are not all zero. We can therefore define 
+\[
+p := \min \left\{ n \in  \NN_0: a_n  \neq 0 \right\}.
+\]
+since $a_0 = f(z_0) $, we have $p \geq 1$. Then, for all $z \in D(z_0, r)$: 
+\begin{align*}
+  f(z)  &= \sum_{n=p}^{+\infty} a_n (z-z_0) ^n   \\
+        &= (z-z_0) ^{p} \sum_{n=0}^{+\infty} a_{n+p} (z-z_0) ^n 
+\end{align*}
+Now, define $ g : \Omega \longrightarrow \CC  $ by: 
+\[
+g(z)  := 
+\begin{cases}
+  \frac{f(z) }{(z-z_0) ^{p}} & \text{ if }  z \neq  z_0,\\
+  a_{p} & \text{ if }  z = z_0.
+\end{cases}
+\]
+We observe that:
+\begin{itemize}
+  \item $g$ is analytic on $\Omega \backslash  \left\{ z_0 \right\}$ (as a quotitent of two 
+    analytic functions on $\Omega \backslash  \left\{ z_0 \right\})$.  
+    \item For $z \in   D(z_0, r) $, $g(z) = \sum_{n=0}^{+\infty} a_{n+p}(z-z_0) ^n $ which shows that $g$ 
+      is analytic at $z_0$. Hence, $g$ is analytic on $\Omega$. Moreover, we have 
+      \[
+      f(z)  = (z-z_0) ^{p} g(z)  \quad \quad (\forall  z \in   \Omega) 
+      \]
+      and $g(z_0)  = a_{p} \neq 0 $ .
+\end{itemize}
+\underline{\ding{50} \textbf{Uniqueness of $p$ and $g$ :}} \\
+Suppose there exists $p_1, p_2 \in  \NN$ and analytic functions $g_1, g_2 $ on $\Omega$ that do not vanish 
+at $z_0$, such that 
+\[
+f(z)  = (z-z_0) ^{p_1} g_1(z) = (z-z_0) ^{p_2}  g_2(z)   \quad \quad 
+(\forall  z \in   \Omega) .
+\]
+Then, for all $z \in   \Omega \backslash  \left\{ z_0 \right\}$, we have: 
+\[
+g_1(z)  = 
+(z-z_0) ^{p_2 - p_1} g_2(z) .
+\]
+If $p_1 <  p_2$ then taking the limit as $z \rightarrow z_0$ and using the continuity of $g_1$ and $g_2$ at $z_0$, 
+we obtain $g_1(z_0)  = 0$, which contradicts the hypothesis $g_1(z_0)  \neq 0$. Therefore, we must have 
+$p_1 \geq p_2$. By symmetry, we also have $p_2 \geq p_1$, so $p_1 = p_2$. Then, from above, we get 
+\[
+  \forall z \in   \Omega \backslash  \left\{ z_0 \right\}: 
+  g_1(z)  = (z-z_0) ^{p_2-p_1} g_2(z),
+\]
+since $p_2 - p_1 = 0$, we get
+\[
+g_1(z) = g_2(z).
+\]
+Since $g_1$ and $g_2$ are continuous at $z_0$, taking the limit as $z \rightarrow z_0$ gives 
+$g_1(z_0)  = g_2(z_0) $. Hence $g_1 \equiv g_2$  on $\Omega$, which completes the proof of uniqueness.
+\end{proof}
+\begin{definition}[]
+In the context of the above theorem, the positive integer $p$ is called the 
+\underline{multiplicity} of the zero $z_0$ of $f$. if $z_1$ is not a zero of $f$, its multiplicity 
+is conventionally taken to be $0$.
+\end{definition}
+% end of file
