@@ -1,0 +1,270 @@
+% lec6.tex 
+\chapter{The Cauchy integral formula on a circle and applications}
+\lecture{6}{08:09 AM Mon, Oct 27 2025}{} 
+\begin{theorem}[]
+Let $z_0 \in   \CC $ and $ f : \CC  \longrightarrow \CC  $ be
+a function, analytic at $z_0$. Let also $R$ be the radius
+of convergence of the power series representing $f$ 
+in a neighborhood of $z_0$. Then for every 
+$n \in  \NN_0$ and every $ 0 <  r <  R$, we have:
+\begin{center}
+\begin{tcolorbox}[boxrule=1pt, colback=larratBicep!60, sharp corners, width=7cm, height=2cm, top=-0.1cm]
+\[
+f^{(n) }(z_0)  = 
+\frac{n!}{2 \pi  r^n }
+\int_{0}^{2\pi } 
+f(z_0 + r e^{i \theta}) 
+e^{-n i \theta} d\theta
+\]
+\end{tcolorbox}
+\end{center}
+In particular, for $n = 0$ and $0 <  r <  R$.
+\begin{center}
+\begin{tcolorbox}[boxrule=1pt, colback=larratBicep!60, sharp corners, width=7cm, height=2cm, top=-0.1cm]
+\[
+  f(z_0)  = 
+  \frac{1}{2\pi }
+  \int_{0}^{2\pi } 
+  f(z_0 + r e^{i \theta}) d \theta
+\]
+\end{tcolorbox}
+\end{center}
+\end{theorem}
+\begin{proof}
+By hypothesis, $\exists !$ complex sequence $(a_n ) _{n \in  \NN_0}$ such that for all $z \in  D(z_0, R) $ 
+\[
+f(z)  = 
+\sum_{n=0}^{+\infty} a_n (z-z_0) ^n \quad \quad (\forall  z \in   D(z_0, R)) 
+\]
+Fix $r \in  (0, R) $. For every $\theta \in   \left[ 0, 2\pi  \right]$, taking $z = z_0 + r e^{i \theta} \in  
+C(z_0, r)  \subset D(z_0, R) $ in the formula above, we obtain
+\[
+f(z_0 + r e^{i \theta}) = 
+\sum_{n=0}^{+\infty} a_n r^n e^{i n \theta}.
+\]
+Since the trigonometric series on the right converges normally (so uniformally) with respect
+to $\theta \in   \left[ 0, 2\pi  \right]$ (Because for all $n \in  \NN_0$, we have
+  $
+\left| a_n  r^n  e^{n i \theta} \right|  =
+\left| a_n r^n  \right|  
+  $, and the series $\sum_{n=0}^{+\infty} \left| a_n  \right|  r^n $ converges by properties of power series) then that is
+  the Fourier series of the function $\theta \mapsto f(z_0 + r e^{i \theta}) $. Consequently, for 
+  every $n \in  \NN_0$, the Fourier coefficients are given by:
+  \[
+  a_n r^n  = \frac{1}{2\pi }
+  \int_{0}^{2\pi } f(z_0 + r e^{i \theta}) e^{-n i \theta} d \theta .
+  \]
+  Thus 
+  \[
+  a_n = \frac{1}{2\pi r^n }
+  \int_{0}^{2\pi } 
+  f(z_0 + r e^{i\theta})  e^{-ni\theta}d\theta.
+  \]
+  Comparing this with Taylor's formula 
+  \[
+    a_n  = \frac{f^{(n) } (z_0) }{n!}
+  \]
+  , we obtain for every $n \in  \NN_0$:
+  \[
+  f^{(n) }(z_0)  = 
+  \frac{n!}{2 \pi  r^n }\int_{0}^{2\pi } 
+  f(z_0 + r e^{i \theta}) e^{-in \theta}d \theta,
+  \]
+  as required.
+\end{proof}
+\begin{remark}
+  In the context of \it Theorem $1$\normalfont, the right-hand side of the second formula (corresponding 
+  to $n = 0$):
+  \[
+  f(z_0)  = \frac{1}{2 \pi }
+  \int_{0}^{2\pi } 
+  f(z_0 + r e^{i \theta}) d \theta.
+  \]
+  is precisely the average value of $f$ on the circle $C(z_0, r) $. Therefore, according to 
+  \it Theorem 1\normalfont, the average value of $f$ on any circle centered at $z_0$ and
+  contained in $D(z_0, R) $ is equal to the value of $f$ at $z_0.$ 
+\end{remark}
+\subsection{Analytic continuation of power series}
+\newpage
+\begin{theorem}[]
+Let $\Omega$ be a nonempty open subset of $\CC $, and let $ f : \Omega  \longrightarrow \CC  $ 
+be an analytic function on $\Omega$. Let $z_0 \in  \Omega$, and let 
+$\sum_{n=0}^{+\infty} a_n (z-z_0) ^n $ (where $a_n \in  \CC $, for all $n \in  \NN_0$) be the 
+unique power series representing $f$ in a small neighborhood 
+$D(z_0, r) \subset  \Omega$  of $z_0$ with (with $r > 0$). Then, the power series
+$\sum_{n=0}^{+\infty} a_n (z-z_0) ^n $ converges on every disk centered at $z_0$ and contained in $\Omega$, 
+and it sum remains $f(z).$ 
+\end{theorem}
+\begin{proof}
+We have
+\[
+f(z)  = 
+\sum_{n=0}^{+\infty} a_n (z-z_0) ^n  \quad \quad (\forall  z \in   D(z_0, r) ) .
+\]
+Let $R > r$ such that $D(z_0, R) \subset \Omega$ and show that the above formula remains valid
+on $D(z_0, R).$ Given $n \in  \NN_0$, by Cauchy's integral formula on a circle, we have for all 
+$0 <  \sigma  <  r:$ 
+\[
+a_n = \frac{1}{2\pi  \sigma ^n   }
+\int_{0}^{2\pi } f(z_0 + \sigma  e^{i \theta}  ) e^{-n i \theta}d \theta.
+\]
+hence 
+$\sigma \mapsto  \frac{1}{2\pi  \sigma ^n   } \int_{0}^{2\pi } f(z_0 + \sigma  e^{i \theta}  ) e^{-n i \theta}d \theta$ is
+constant (with respect to $\sigma   $) in $(0, r)$. This suggests us to define 
+\[
+\begin{array}{cccl}
+      \FF : &  (0, R)  & \longrightarrow & \CC  \\
+
+           &  \sigma     & \longmapsto     & \FF(\sigma   ) = 
+           \frac{1}{2\pi  \sigma ^n   } \int_{0}^{2\pi } f(z_0 + \sigma e^{i \theta}  ) e^{-ni\theta} d\theta.\\ 
+\end{array}
+\]
+$(\FF \text{ is constant in $(0, r) $. with value $a_n$ } ). $  Since $f$ is analytic (so continuous) on 
+$D(z_0, R) \subset \Omega$  then $\FF$ is well-defined and differentiable on $(0, R) $. We now show that 
+$\FF$ remains constant on $(0, R)$ on $(0, R).$ By applying results from measure theory 
+and integration (which allow differentiation under the integral sign), we have for all $\sigma  \in  (0, R):$ 
+\begin{align*}
+  \FF'(\sigma   ) 
+  &= - \frac{n \sigma ^{-n-1}  }{2\pi } \int_{0}^{2\pi } f(z_0 + \sigma e^{i \theta}  ) e^{-n i \theta}d \theta + 
+  \frac{\sigma ^{-n}  }{2\pi }
+  \int_{0 }^{2\pi } f'(z_0 + \sigma  e^{i \theta}  ) e^{(-n + 1) i \theta} d \theta. \\
+  &= \frac{\sigma ^{-n-1}  }{2 \pi }
+  \int_{0}^{2\pi } 
+  \underbrace{
+  \left[ -n f(z_0 + \sigma  e^{i \theta}  ) e^{-ni\theta} + 
+  \sigma  f'(z_0 + \sigma  e^{i\theta}  ) e^{(-n + 1) i \theta}  \right]
+  }_{\frac{d }{d \theta} ( -i f (z_0 + \sigma  e^{i \theta}  ) e^{-n i \theta}) } 
+  d 
+  \theta \\
+  &= 
+  \frac{\sigma ^{-n-1}  }{2 \pi  }
+    \underbrace{
+  \left[ 
+  -if(z_0 + \sigma e^{i \theta}  ) e^{-n i \theta} 
+  \right]_{0}^{2\pi } 
+    }_{ = 0} 
+  = 0.
+\end{align*}
+This shows that $\FF$ is constant on $(0, R)$, and its value is $a_n $ (since $\FF \equiv a_n $ on $(0, r)$). Thus,
+we have shown that:
+\[
+a_n  = \frac{1}{2\pi \sigma ^n   } \int_{
+0}^{2\pi } f(z_0 + \sigma  e^{i \theta}  ) e^{-n i \theta} d \theta
+\quad \quad 
+( \forall  n \in  \NN_0, \forall \sigma  \in  (0, R)  ) 
+\]
+This formula allows us to estimate $\left| a_n  \right|  $ in terms of $n$. Giving $n \in  \NN_0, \sigma  \in  (0, R)$, and 
+setting $M(f)  := \sup_{z \in   C(z_0, \sigma   ) } \left| f(z)  \right|$, we have:
+\begin{align*}
+  a_n  &= 
+  \left| \frac{1}{2\pi \sigma ^n   }\int_{0}^{2\pi } 
+  f(z_0 + \sigma  e^{i\theta}  ) e^{-n i \theta}d \theta\right|   \\
+       & \leq 
+       \frac{1}{2\pi  \sigma ^n   } 
+       \int_{0}^{2\pi } 
+       \underbrace{
+         \left| f(z_0 + \sigma e^{i \theta}  )  \right|  
+       }_{ \leq  M(f) } d \theta\\
+        \left| a_n  \right|  & \leq \frac{M(f) }{\sigma ^n   } \quad 
+        \forall n \in  \NN_0, \forall \sigma  \in  (0, R)   
+\end{align*}
+So $\forall  z \in  D(z_0, \sigma  ): $ 
+\[
+\left| a_n (z-z_0) ^n  \right|  \leq 
+M(f) 
+\left| \frac{z-z_0}{\sigma   } \right|  ^n 
+\]
+implying that the power series $\sum_{n=0}^{+\infty} a_n (z-z_0) ^n $ 
+converges absolutely on $D(z_0, \sigma   ) , \forall \sigma  \in   (0, R)$. Consequently, 
+$\sum_{n=0}^{+\infty} a_n (z-z_0) ^n $ converges (absolutely) on $D(z_0, R)$.  
+Further, define
+\[
+g(z) = 
+\sum_{n=0}^{+\infty} a_n (z-z_0) ^n  \quad 
+\quad (\forall  z \in   D(z_0, R) ) .
+\]
+Since $g$ is analytic on $D(z_0, R) $ and coincides with $f$ on $D(z_0, r) $, by the principle
+of analytic continuation, $g$ coincides with $f$ on $D(z_0, R) $. Hence
+\[
+f(z)  = 
+\sum_{n=0}^{+\infty} a_n (z-z_0) ^n  \quad \quad 
+(\forall  z \in  D(z_0, R) ),
+\]
+completing the proof.
+\end{proof}
+\begin{corollary}[]
+Let $\Omega$ be a nonempty open subset of $\CC $ and $z_0$ be a point in $\Omega$. Let also
+$ f : \Omega \longrightarrow \CC  $ be an analytic function on $\Omega$ and 
+$\sum_{n=0}^{+\infty} a_n (z-z_0) ^n $ (where $(a_n ) _{n \in  \NN_0} \subset \CC $) be a power series
+representing $f$ in a neighborhood of $z_0$. Then the radius of convergence $R$ of that power series satisfies;
+\[
+R \geq  \text{dist}  (z_0, \CC \backslash \Omega).
+\]
+\end{corollary}
+\begin{proof}
+Set $\sigma := \text{dist}  (z_0, \CC  \backslash  \Omega) $. By definition of $S$, we have $D(z_0, \sigma   ) \subset \Omega$.
+(Indeed, if $z \in  \CC \backslash \Omega$ then $d(z, z_0) \geq \inf_{w \in  \CC \backslash \Omega} d(w, z_0) = d
+(z_0, \CC \backslash \Omega) = \sigma    $, thus $z \in  \CC \backslash D(z_0, \sigma  ) $ ). Thus, by \it Theorem 2\normalfont, 
+the power series $\sum_{n=0}^{+\infty} a_n (z-z_0) ^n $ converges on $D(z_0, \sigma   ) $. Hence $R \geq \sigma $, as required.
+\end{proof}
+\begin{example}
+  \ding{43} \textcolor{blue}{\textsc{Very Important}}.\\
+  Consider the function  $f(z) = \frac{z}{e^{z} - 1}$ with the convention $f(0)  = 1$. For all $z$ in a small
+  neighborhood of $\theta$, with $z \neq 0$, we have:
+  \begin{align*}
+    f(z) &= \frac{z}{z + \frac{z^2 }{2!} + \frac{z^3}{3!} + \hdots } \\
+         &= 
+         \frac{1}{1 + \frac{z}{2!} + \frac{z^2 }{3!} + \hdots },
+  \end{align*}
+  Which also holds for $z = 0$, showing that $f$ is analytic at $0$ (as a quotient of two analytic functions
+  at $0$, with the denominator nonzero at $0$). Moreover, the zero of $z \mapsto  e^{z} - 1$ are the complex numbers 
+  $2 k \pi i$ with $k \in  \mathbb{Z}$, implying that $f$ is analytic on $\CC  \backslash  2 \pi  i \mathbb{Z}$ (as
+  a quotient of two analytic functions on this domain, with the denominator nonzero at any point 
+  of the domain). In conclusion, $f$ is analytic on the domain 
+  \begin{align*}
+    \Omega &= 
+    \left( \CC  \backslash  2\pi \mathbb{Z} \right) \cup \left\{ 0 \right\} \\
+           &= \CC  \backslash  2 \pi i \mathbb{Z}^{*}.
+  \end{align*}
+  Consider the power series expansion of $f$ at $0:$ 
+  \[
+  \frac{z}{e^{z} - 1} = 
+  \sum_{n=0}^{+\infty} B_n \frac{z^n }{n!}, \quad \quad (*) 
+  \]
+  where $B_n (n \in  \NN_0) $ are the famous Bernoulli numbers, which appear in nearly all branches of mathematics
+  (number theory, analysis, combinatorics, algebraic geometry, etc...).:w
+  \[
+  B_0 = 1, B_1 = -\frac{1}{2}, B_2 = \frac{1}{6}, B_3 = 0, 
+  B_4= \frac{1}{42}, \hdots 
+  \]
+  \[
+    (B + 1) ^n  = B^n  \quad \quad (\forall  n \geq \NN_2).
+  \]
+  for $n = 2:$ 
+  \[
+  B^2  + 2B + 1 = B_2 \implies B_1 = -\frac{1}{2}
+  \]
+  for $n = 3:$ 
+  \[
+    (B + 1) ^3  = B^3  \implies 
+    3 B_2 = \frac{1}{2} \implies B_2 = \frac{1}{6}.
+  \]
+  \it Theorem $2$ \normalfont shows that fomula $(*) $ is valid on the largest disk centered
+  at $0$ and contained in $\Omega$, which is $D(0, 2\pi). $ Hence
+  \[
+    \frac{z}{e^{z} - 1} = 
+    \sum_{n=0}^{+\infty} B_n \frac{z^n }{n!} \quad \quad (\forall z \in  \CC, \left| z \right|  < 2\pi   ).
+  \]
+\end{example}
+\begin{remark}
+  It can be shown that 
+  \[
+  B_{2n+1} = 0 \quad \forall n \geq 1,
+  \]
+  and 
+  \[
+  B_{2n} \sim_{+\infty } (-1) ^{n-1} \cdot \frac{2 (2n) !}{(2\pi ) ^{2n}}.
+  \]
+  This allows us to directly verify (using Hadamard formula) that the radius of convergence of the power series $\sum_{n=0}^{+\infty} B _n \frac{z^n }{n!}$ is exactly $2\pi .$ 
+\end{remark}
+% end of file
