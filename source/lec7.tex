@@ -1,0 +1,307 @@
+% lec7.tex 
+\lecture{7}{08:08 AM Mon, Nov 03 2025}{} 
+\begin{theorem}[Cauchy's integral formula on a circle II]
+  Let $f$ be an analytic function on a nonempty open subset $\Omega$ 
+  of $\CC $ containing a closed disk $\overline{D}(z_0, R)$ (with $z_0 \in  \Omega$, and $R> 0$). Then
+  for any $n \in  \NN_0$, we have
+  \begin{center}
+  \begin{tcolorbox}[boxrule=1pt, colback=larratBicep!60, sharp corners, width=7.5cm, height=2cm, top=-0.1cm]
+  \[
+    f^{(n) }(z_0)  = 
+    \frac{n!}{2 \pi  R^n }\int_{0}^{2\pi } f(z_0 + R e^{i\theta}) e^{-ni\theta}d \theta.
+  \]
+  \end{tcolorbox}
+  \end{center}
+  In particular, for $n = 0$:
+  \begin{center}
+  \begin{tcolorbox}[boxrule=1pt, colback=larratBicep!60, sharp corners, width=6cm, height=2cm, top=-0.1cm]
+  \[
+    f(z_0)  = \frac{1}{2\pi }\int_{0}^{2\pi } f(z_0 + R e^{i\theta}) d \theta
+  \]
+  \end{tcolorbox}
+  \end{center}
+\end{theorem}
+\ding{50} To prove this theorem, we need the following toplogical lemma (corollary):
+\begin{corollary}[]
+In the context of \it Theorem 4 \normalfont, $\exists  \al > 0$ such that $D(z_0, R + \al) \subset \Omega.$ 
+\end{corollary}
+\begin{proof}
+Since $\overline{D}(z_0, R) $ is compact in $\CC $ (because it's closed and bounded in $\CC $) and $\CC  \backslash  \Omega$
+is closed in $\CC $ (because $\Omega$ is open in $\CC $) and $\overline{D}(z_0, R) \cap (\CC  \backslash  \Omega) = \emptyset $
+(since $\overline{D}(z_0, R) \subset \Omega$ by hypothesis) then $d(\overline{D}(z_0, R) , \CC  \backslash  \Omega) > 0.$ 
+Set $\al := d(\overline{D}(z_0, R) , \CC  \backslash  \Omega)  >  0$ and show that:
+\[
+  \CC  \backslash  \Omega \subset \CC  \backslash  D(z_0, R + \al)  \tag{\startbf{1}}
+\]
+Let us show \textbf{(1)}. Let $z \in  \CC  \backslash  \Omega$ and set
+\[
+  u_{z} := z_0 + \frac{z-z_0}{\left| z-z_0 \right|  }R
+\]
+(so $u_{z} \in  C(z_0, R) \subset \overline{D}(z_0, R)$) On the one hand, we have:
+\[
+\left| z-u_{z} \right|  = d(z, u_{z}) \geq d(\CC \backslash \Omega, \overline{D}(z_0, R)) = \al.
+\]
+On the other hand, we have:
+\begin{align*}
+  \left| z-u_{z} \right|  &=
+  \left| z-z_0 - \frac{z-z_0}{\left| z-z_0 \right|  }R \right|   \\
+                          &= 
+                          \left| (z-z_0) \left( 1 - 
+                            \underbrace{
+                          \frac{R}{\left| z-z_0 \right|  }
+                            }_{< 1 } 
+                        \right)  \right|   \text{ (since $\left| z-z_0 \right|  > R$, $z \in  \CC \backslash \Omega \subset 
+                            \overline{D}(z_0, R) $)}    
+                        \\
+                          &=
+                          \left( 1 - \frac{R}{\left| z-z_0 \right| } \right) 
+                          \left| z-z_0 \right|  = \left| z-z_0 \right|  - R.
+\end{align*}
+Comparing the two results, we get
+\[
+\left| z-z_0 \right|  - R \geq \al, 
+\]
+i.e., 
+\[
+\left| z-z_0 \right|  \geq R + \al
+\]
+i.e., 
+\[
+z \in  \CC  \backslash  D(z_0, R + \al) ,
+\]
+as required. Inclusion \textbf{(1)} is then proved. Hence $D(z_0, R + \al) \subset \Omega$, completing
+the proof.
+\end{proof}
+\noindent\textcolor{purple}{
+\ding{65} \textsc{Proof of Theorem $4$}
+}
+\begin{proof}
+By \it Corollary $5$ \normalfont, $\exists  \al > 0$ such that $D(z_0, R + \al) \subset  \Omega$. 
+Then, by \it Theorem $2$\normalfont, $\exists (a_n ) _{n \in  \NN_0} \in  \CC $ such that 
+\[
+f(z)  = \sum_{n=0}^{+\infty} a_n (z-z_0) ^n  \quad (\forall  z \in  D(z_0, R + \al)). 
+\]
+Finally, by \it Theorem $1$\normalfont, we have for all $n \in  \NN_0$:
+\[
+f^{(n) }(z_0)  = \frac{n!}{2 \pi  R^n }
+\int_{0}^{2\pi } f(z_0 + R e^{i\theta}) e^{-ni\theta}d\theta \quad \text{(since $R < R + \al$).}  
+\]
+The Theorem is then proved.
+\end{proof}
+\section{Cauchy's inequalities}
+Cauchy's inequalities (also called Cauchy's estimates) are fundamental bounds on the derivatives (of different orders) 
+of an analytic function in terms of the function it self.
+\begin{theorem}[Cauchy's inequalities]
+  Let $f$ be an analytic function on a nonempty open subset $\Omega$ of $\CC $ containing a closed disk
+  $\overline{D}(z_0, R) $ (with $z_0 \in  \Omega, R > 0$). Then for any $n \in  \NN_0$, the $\text{n}  ^{th}$ derivative
+  of $f$ at $z_0$ satisfies the inequality
+  \begin{center}
+  \begin{tcolorbox}[boxrule=1pt, colback=larratBicep!60, sharp corners, width=6cm, height=2cm, top=-0.1cm]
+  \[
+    \left| f^{(n) }(z_0)  \right|  \leq 
+    \frac{n!}{R^n }M_{f}(R),
+  \]
+  \end{tcolorbox}
+  \end{center}
+  where $M_{f}(R)  := \sup_{z \in  C(z_0, R)} \left| f(z)  \right| $ is the maximum modulus 
+  of $f$ on the circle of radius $R$ centered at $z_0$.
+\end{theorem}
+\marginpar{If we know the values of $f$ analytic function in a circle $R$, we are able to 
+know it's values in the interior.}
+\begin{proof}
+  By \it Theorem $4$ (Last section)\normalfont, we have for all $n \in  \NN_0:$ 
+  \[
+  f^{(n) }(z_0) = 
+  \frac{n!}{2 \pi  R^n } 
+  \int_{0}^{2\pi } f(z_0 + R e^{i\theta}) e^{-ni\theta} d \theta.
+  \]
+  which gives:
+  \begin{align*}
+    \left| f^{(n) }(z_0)  \right|  &= 
+    \frac{n!}{2 \pi  R^n }
+    \left| \int_{0}^{2\pi } f(z_0 + R e^{i \theta}) e^{-n i \theta} d \theta \right|   \\
+                                   & \leq 
+                                   \frac{n!}{2 \pi  R^n }
+                                   \int_{0 }^{2\pi } 
+                                   \left| f(z_0 + R e^{ i \theta})  \right|  
+                                   \underbrace{
+                                   \left| e^{-n i \theta} \right|
+                                   }_{ = 1} 
+                                   d \theta
+                                   \\
+                                   &= \frac{n!}{2 \pi  R ^n }
+                                   \int_{0}^{2\pi } 
+                                   \left| 
+                                   \underbrace{
+                                   f(z_0 + R e^{i \theta}) 
+                                   }_{
+                                   \leq 
+                                   \sup_{0 \leq \theta \leq  2\pi } 
+                                   \left| f(z_0 + R e ^{ i \theta})  \right|  
+                                   } 
+                                   \right|  d \theta.  \\
+                                   & \leq 
+                                   \frac{n!}{2 \pi  R^n }
+                                   2 \pi  \sup_{\theta \in   \left[ 0, 2\pi  \right]} 
+                                   \left| f(z_0 + R e^{i \theta})  \right|.   \\
+  \end{align*}
+  Since $ \theta \in   \left[ 0, 2\pi  \right] \iff z_0 + R e^{ i \theta} \in  C(z_0, R) $, then 
+  $\sup_{\theta \in   \left[ 0, 2\pi  \right]} \left| f(z_0 + R e^{ i \theta})  \right|  = 
+  \sup_{z \in   C(z_0, R) } \left| f(z)  \right|  = M_{f}(R)$. Hence 
+  \[
+    \left| f^{(n) }(z_0)  \right|   \leq 
+    \frac{n!}{R ^n }
+    M_{f}(R),
+  \]
+  as required.
+\end{proof}
+\section{Lionville's theorem}
+\begin{theorem}[Lionville's theorem]
+  Every entire function (i.e., analytic on $\CC $) that is bounded is necessarily constant.
+\end{theorem}
+\begin{proof}
+Let $f$ be an entire function bounded by some constant $M > 0$ (i.e., $\left| f(z)  \right|  \leq  M, \forall z \in  \CC$). 
+We will show that $f'(z_0) = 0 $, $\forall z_0 \in   \CC .$ Since $f$ is analytic on $\CC $ then, by applying
+Cauchy's inequalities (i.e. \it Theorem $1$ \normalfont) for $n = 1$, we obtain for all $R > 0:$ 
+\[
+\left| f'(z_0)  \right|  \leq 
+\frac{1}{R} 
+\sup_{z \in  C(z_0, R) } 
+\left| f(z)  \right|   \leq  \frac{M}{R}
+\]
+By letting $R \rightarrow +\infty $, we obtain $f'(z_0)  = 0$, since $z_0$ was arbitrary in $\CC $, 
+then $f'$ is identically zero on $\CC $, implying that $f$ is constant, as required.
+\end{proof}
+\subsection{Proof of the fundamental theorem of Algebra via Lionville's theorem}
+We first prove the following theorem, from which we immediately derive
+the fundamental theorem of Algebra.
+\begin{theorem}[]
+Every non constant polynomial in $\CC \left[ Z \right]$ has at least one zero in $\CC.$ 
+\end{theorem}
+\begin{proof}
+  \textbf{Through Lionville's theorem.} Let $P \in  \CC \left[ Z \right]$ be a non constant polynomial and write:
+  \[
+  P(z)  = a_0 z ^n + a_1 z^{n-1} + \hdots + a_n,  
+  \]
+  with $n \in  \NN, a_0, a_1, \hdots , a_n \in  \CC $, with $a_0 \neq  0$. Assume for contradiction that 
+  $P$ has no root in $\CC $. Then the function $ f : \CC  \longrightarrow \CC  $ 
+  defined by 
+  \[
+    f(z) = \frac{1}{P(z) } \quad \quad (\forall  z \in  \CC ),
+  \]
+  is analytic on $\CC $ (as a rational function is well defined on the whole complex plane $\CC $); i.e., 
+$f$ is an entire function. Let us show in addition that $f$ is bounded. For all $z \in  \CC ^{*}$, we have:
+\begin{align*}
+\left| P(z)  \right|  
+&= 
+\left| z ^n  \left( a_0 + \frac{a_1}{z} + \frac{a_2}{z ^2 }+ \hdots  + \frac{a _n  }{z ^n} \right)  \right|  \\
+&= 
+\left| z \right|  ^n  \cdot  
+\left|  a_0 + \frac{a_1}{z} + \frac{a_2}{z ^2 }+ \hdots + \frac{a_n }{z ^n } \right|  .
+\end{align*}
+Since $a_0 \neq  0$ and 
+\[
+\lim_{\left| z \right|   \to \infty} 
+\frac{a_1}{z} =
+\lim_{\left| z \right|   \to \infty} 
+\frac{a_2}{z^2 } = \hdots 
+\lim_{\left| z \right|   \to \infty} 
+\frac{a_n}{z^n } = 0.
+\]
+Then $\lim_{\left| z \right|   \to \infty}  \left| P(z)  \right|  = + \infty .$  Thus 
+\[
+\lim_{\left| z \right|   \to \infty} 
+\left| f(z)  \right|  = 0.
+\]
+Therefore, there exists $R > 0$ such that 
+\[
+\left| f(z)  \right|  \leq 1 \quad \quad (\forall  z \in  \CC, \left| z \right|  > R). 
+\]
+On the other hand, since $z \mapsto \left| f(z)  \right|  $ is continuous on the compact 
+set $\overline{D}(z_0, R) $, there exists $M > 0$ such that
+\[
+\left| f(z)  \right|   \leq  M \quad \quad 
+\forall z \in   \overline{D}(0, R) 
+\]
+Hence, for all $z \in  \CC $:
+\[
+\left| f(z)  \right|  \leq  \max \left( 1, M \right) .
+\]
+This shows that $f$ is bounded applying Lionville's theorem, we deduce that $f$ is constant; so 
+$\frac{1}{P}$ is constant, implying that $P$ is constant, Contradiction. This contradiction confirms 
+that $P$ has atleast one zero in $\CC $, as required.
+\end{proof}
+\begin{corollary}[Fundamental Theorem of Algebra]
+  Every polynomial $P \in  \CC \left[ Z \right]$ splits over $\CC .$ 
+\end{corollary}
+\begin{proof}
+Proceed by induction on the degree of $P$ and use \it Theorem $7$ \normalfont
+\end{proof}
+\section{The maximum modulus principle}
+The maximum modulus principle ensures that the modulus of a non-constant analytic function 
+on a \underline{nonempty connected open} set $\Omega \subset \CC $, continuous 
+on $\overline{\Omega}$, can attain its maximum only on the boundary $\partial \Omega := 
+\overline{\Omega} \backslash  \Omega$, and never in $\Omega$. We begin by establishing  the following key lemma (corollary).
+\begin{corollary}[]
+  Let $f$ be a non-constant analytic function on a non-empty connected open set $\Omega \subset \CC $ containing 
+  a closed disk $\overline{D}(z_0, R)$ (with $z_0 \in   \Omega$, and $R > 0$). Then, we have:
+  \[
+    \left| f(z_0)  \right|   <  \max_{z \in   \overline{D}(z_0, R) } \left| f(z)  \right|  .
+  \]
+\end{corollary}
+\begin{proof}
+We distinguish two cases:\\
+\textbf{Case 1:} (if $f(z_0) = 0$). By the isolated zero theorem, $f$ is not identically zero on $\overline{D}(z_0, R) $.
+Hence 
+\[
+\max _{z \in   \overline{D}(z_0, R) } \left| f(z)  \right|   > 0 = \left| f(z_0)  \right|,
+\]
+as required. \\
+\textbf{Case 2:} (if $f(z_0) \neq  0$). Since the function $z \mapsto  f(z) - f(z_0) $ is analytic on $\Omega$ and 
+not identically zero on $\Omega$ (which is connected) then it's zero $z_0$ has a finite multiplicity $p \in  \NN$. Therefore, 
+in a neighborhood of $z_0$, we have:
+\[
+  f(z) - f(z_0) = a (z-  z_0)^{p} + o \left( (z-z_0) ^{p} \right), \tag{\text{\ding{40}}  }
+\]
+with $a \in  \CC ^{*}$. Next, consider the exponential form of the nonzero complex number 
+$\frac{a}{f(z_0) }$; that is, $\frac{a}{f(z_0) }= \rho e^{i \theta}  $, where $ \rho > 0  $, and 
+$\theta \in   \left[ 0, 2\pi  \right).$  and define, for $\veps  > 0$ sufficiently small:
+\[
+z_{\veps } := z_0 + \veps  e^{ i \frac{\theta}{\rho}}.
+\]
+From (\ding{40}), we have (for $\veps$ sufficiently small).
+\begin{align*}
+f(z _{\veps })  - f(z_0) 
+&= 
+a (z _{ \veps  } - z_0) ^{p} + o \left( (z-z_0) ^{p} \right)  \\
+&= 
+\underbrace{a 
+}_{ f(z_0) \rho e^{ i \theta}} 
+\left( e^{p} e^{- i \theta} \right)  + o \left( (z-z_0) ^{p} \right) \\
+&= 
+f(z_0) \rho \veps ^{p} + 
+o \left( \veps ^{p} \right) .
+\end{align*}
+Hence
+\begin{align*}
+  f(z _{ \veps }) &=
+  f(z_0)  + f(z_0)  \rho \veps ^{p} +
+   o ( \veps  ^{p}).\\
+                  &= 
+                  f(z_0)  \left( 
+                  1 + \rho \veps ^{p}\right) + o 
+                  \left( \veps  ^{p} \right) .
+\end{align*}
+Hence
+\[
+\left| \frac{f(z_{\veps }) }{f(z_0) } \right|   = 
+1 + \rho \veps ^{p} +  o \left( \veps ^{p} \right) > 1 
+\]
+for all $\veps $ sufficiently small since $z_{\veps } \in  \overline{D}(z_0, R) $ for $\veps $ sufficiently small
+then 
+\[
+\left| f(z_0)  \right|  < \max _{z \in  \overline{D}(z_0, R) } \left| f(z)  \right|,
+\]
+as required.
+\end{proof}
+% end of file
